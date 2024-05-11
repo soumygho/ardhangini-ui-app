@@ -1,0 +1,268 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('../css/color.css');
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.text-dark {
+    color: var(--dark-color)!important;
+}
+.text-light {
+    color: var(--light-color)!important;
+}
+.bg-dark {
+    background-color: var(--dark-color)!important;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #6b4c4d;
+}
+
+.top-bar ul {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar ul li {
+    border-left: .5px solid rgba(255,255,255,.25);
+    border-right:.5 px solid rgba(255,255,255,.25);
+    padding: 15px;
+}
+
+.top-bar ul a {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -.5px;
+}
+
+.social-sec li:first-child a {
+    padding: 0 10px;
+}
+
+/* Brand Logo and Support section */
+
+.brandlogo-sec {
+    background-color: rgba(241, 241, 241, 1);
+}
+.main-search-bar {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.main-search-bar .searchTerm {
+    width: 100%;
+    border: 1px solid #666;
+    border-right: none;
+    padding: 10px;
+    height: 55px;
+    border-radius: 0;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.main-search-bar .searchTerm:focus {
+    color: #333;
+}
+
+.main-search-bar .searchButton {
+    width: 65px;
+    height: 55px;
+    border: 1px solid #666;
+    background: #6b4c4d;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-left: 0;
+}
+
+.user-section li {
+    margin: 0 8px;
+}
+
+.user-section li a {
+    font-size: 18px;
+}
+.mega-dropdown {
+    position: static;
+}
+
+.mega-dropdown .icon {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mega-dropdown .icon i {
+    color: #000;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #000;
+    transition: all ease 0.3s;
+    bottom: 2px;
+    height: 2px;
+    transition: 0.5s ease-in-out;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover::before,
+.navbar-expand-lg .navbar-nav .nav-link.active::before {
+    width: 100%;
+    background-color: #6b4c4d;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover,
+.navbar-expand-lg .navbar-nav .nav-link.active {
+    color: #6b4c4d;
+}
+
+.navbar-nav li {
+    margin: 0 25px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    display: none;
+}
