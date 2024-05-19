@@ -1,8 +1,10 @@
-import React from "react";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
+interface ProductStripProps {
+  title: string;
+}
 
-function TrendingProducts() {
+function TrendingProducts({ title }: ProductStripProps) {
   //show only top 4 trendiing products
   const products = [1, 2, 3, 4];
   return (
@@ -11,7 +13,7 @@ function TrendingProducts() {
         <div className="row">
           <div className="col-12">
             <div className="section-title text-center">
-              <h2>New Products</h2>
+              <h2>{title}</h2>
               <p>
                 Accumsan vitae pede lacus ut ullamcorper sollicitudin quisque
                 libero

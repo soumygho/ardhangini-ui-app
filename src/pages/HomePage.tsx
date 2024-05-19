@@ -4,12 +4,17 @@ import banner from "../images/desktop_banner.jpg";
 import TrendingProducts from "../components/Home/TrendingProducts";
 import Blogs from "../components/Home/Blogs";
 import ServicePolicy from "../components/Home/ServicePolicy";
+import Offers from "../components/Home/Offers";
+import Testimonials from "../components/Home/Testimonials";
 
 function HomePage() {
   return (
     <>
       <Banner image={banner} />
-      <TrendingProducts />
+      <TrendingProducts title="New Products" />
+      <Offers />
+      <TrendingProducts title="Top Seller" />
+      <Testimonials />
       <ServicePolicy />
       <Blogs />
     </>
