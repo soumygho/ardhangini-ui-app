@@ -68,12 +68,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg shadow-sm bg-light navbar-light sticky-top">
         <div className="container-fluid">
           <Link className="navbar-brand d-block d-sm-none" to="/">
-            <img
-              src="static/images/logo2.png"
-              alt="Logo"
-              className="img-fluid"
-              width="130"
-            />
+            <img src={logo} alt="Logo" className="img-fluid" width="130" />
           </Link>
           <button
             className="navbar-toggler"
