@@ -28,4 +28,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script>
+    // testimonial carousel active js
+    $('.testimonial-content-carousel').slick({
+      arrows: false,
+      asNavFor: '.testimonial-thumb-carousel'
+    });
+
+
+    // product details slider nav active
+    $('.testimonial-thumb-carousel').slick({
+      slidesToShow: 3,
+      asNavFor: '.testimonial-content-carousel',
+      centerMode: true,
+      arrows: false,
+      centerPadding: 0,
+      focusOnSelect: true
+    });
+
+  </script>
 </html>

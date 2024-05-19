@@ -1,7 +1,7 @@
 import React from "react";
-import paymentpic from "../images/payment-pic.png";
-import paypalpic from "../images/paypal-card.jpg";
-import logo from "../images/logo.png";
+import paymentpic from "../../images/payment-pic.png";
+import paypalpic from "../../images/paypal-card.jpg";
+import logo from "../../images/logo.png";
 
 function Footer() {
   return (

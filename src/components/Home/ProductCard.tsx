@@ -1,6 +1,6 @@
 import React from "react";
-import product1 from "../images/product-1.jpg";
-import product2 from "../images/product-2.jpg";
+import product1 from "../../images/product-1.jpg";
+import product2 from "../../images/product-2.jpg";
 
 function ProductCard() {
   return (

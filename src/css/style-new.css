@@ -328,8 +328,8 @@ fieldset legend {
     border-radius: 3px;
     z-index: 1;
     background-color: rgba(240, 240, 240, 0.7);
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
     transition: 0.4s;
