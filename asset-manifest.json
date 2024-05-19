@@ -1,20 +1,29 @@
 {
   "files": {
-    "main.css": "/ardhangini-ui-app/static/css/main.5a90f045.css",
-    "main.js": "/ardhangini-ui-app/static/js/main.29540d67.js",
+    "main.css": "/ardhangini-ui-app/static/css/main.3c3f50e3.css",
+    "main.js": "/ardhangini-ui-app/static/js/main.8d4ae80d.js",
     "static/js/453.c023821b.chunk.js": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js",
     "static/media/desktop_banner.jpg": "/ardhangini-ui-app/static/media/desktop_banner.542f3b619f62f3c49aa2.jpg",
     "static/media/cancel.png": "/ardhangini-ui-app/static/media/cancel.5db131824953bc598b6e.png",
     "static/media/logo.png": "/ardhangini-ui-app/static/media/logo.5db131824953bc598b6e.png",
+    "static/media/blog-details-1.jpg": "/ardhangini-ui-app/static/media/blog-details-1.84b9e74b18ffa2e03e36.jpg",
+    "static/media/logo-1.jpg": "/ardhangini-ui-app/static/media/logo-1.44894cf9b2ee60d23af9.jpg",
+    "static/media/logo-3.jpg": "/ardhangini-ui-app/static/media/logo-3.b3105e3b728f9589f71f.jpg",
+    "static/media/logo-2.jpg": "/ardhangini-ui-app/static/media/logo-2.6b564bc46975cd99d0a7.jpg",
     "static/media/product-1.jpg": "/ardhangini-ui-app/static/media/product-1.1b81e74e0d7b56745a10.jpg",
     "static/media/product-2.jpg": "/ardhangini-ui-app/static/media/product-2.1b81e74e0d7b56745a10.jpg",
+    "static/media/logo-4.jpg": "/ardhangini-ui-app/static/media/logo-4.aa1c26c1efb3c840980a.jpg",
+    "static/media/slick.svg": "/ardhangini-ui-app/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/ardhangini-ui-app/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/ardhangini-ui-app/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/ardhangini-ui-app/index.html",
-    "main.5a90f045.css.map": "/ardhangini-ui-app/static/css/main.5a90f045.css.map",
-    "main.29540d67.js.map": "/ardhangini-ui-app/static/js/main.29540d67.js.map",
+    "static/media/slick.woff": "/ardhangini-ui-app/static/media/slick.295183786cd8a1389865.woff",
+    "main.3c3f50e3.css.map": "/ardhangini-ui-app/static/css/main.3c3f50e3.css.map",
+    "main.8d4ae80d.js.map": "/ardhangini-ui-app/static/js/main.8d4ae80d.js.map",
     "453.c023821b.chunk.js.map": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a90f045.css",
-    "static/js/main.29540d67.js"
+    "static/css/main.3c3f50e3.css",
+    "static/js/main.8d4ae80d.js"
   ]
 }
