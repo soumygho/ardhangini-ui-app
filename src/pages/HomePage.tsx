@@ -10,13 +10,15 @@ import Testimonials from "../components/Home/Testimonials";
 function HomePage() {
   return (
     <>
-      <Banner image={banner} />
-      <TrendingProducts title="New Products" />
-      <Offers />
-      <TrendingProducts title="Top Seller" />
-      <Testimonials />
-      <ServicePolicy />
-      <Blogs />
+      <main>
+        <Banner image={banner} />
+        <TrendingProducts title="New Products" />
+        <Offers />
+        <TrendingProducts title="Top Seller" />
+        <Testimonials />
+        <ServicePolicy />
+        <Blogs />
+      </main>
     </>
   );
 }

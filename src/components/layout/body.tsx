@@ -9,10 +9,12 @@ import ReadyToShipPage from "../../pages/ReadyToShipPage";
 import NoPage from "../../pages/NoPage";
 import NewArrivals from "../../pages/NewArrivals";
 import SareesPage from "../../pages/SareesPage";
+import BreadCrumb from "./BreadCrumb";
 
 function Body() {
   return (
     <>
+      <BreadCrumb></BreadCrumb>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
