@@ -1,10 +1,10 @@
 /*------ Typography Style Start ------*/
 body {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.8;
     font-weight: 400;
     font-family: "Roboto", sans-serif;
-    color: #555;
+    color: #333;
 }
 
 a {
@@ -16,7 +16,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #88d1d9;
+    color: #000;
     outline: none;
     text-decoration: none;
 }
@@ -328,8 +328,8 @@ fieldset legend {
     border-radius: 3px;
     z-index: 1;
     background-color: rgba(240, 240, 240, 0.7);
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
     transition: 0.4s;
@@ -4537,7 +4537,7 @@ only screen and (max-width: 767.98px) {
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
-    max-height: 400px;
+    max-height: 600px;
     object-fit: cover;
     object-position: top center;
 }
@@ -6515,6 +6515,10 @@ only screen and (max-width: 767.98px) {
 
 .footer-social-link a:first-child {
     margin-left: 0;
+}
+
+.offer-svg {
+    enable-background:new 0 0 115.77 122.88
 }
 
 /*-------- footer bottom area end --------*/

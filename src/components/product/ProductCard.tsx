@@ -1,15 +1,19 @@
 import React from "react";
 import product1 from "../../images/product-1.jpg";
 import product2 from "../../images/product-2.jpg";
+import { useNavigate } from "react-router-dom";
+import {Link} from 'react-router-dom';
+
 
 function ProductCard() {
+  const navigate = useNavigate();
   return (
     <div className="product-item mt-40">
       <figure className="product-thumb">
-        <a href="#">
+        <Link to="/product-details">
           <img className="pri-img" src={product1} alt="product" />
           <img className="sec-img" src={product2} alt="product" />
-        </a>
+        </Link>
         <div className="product-badge">
           <div className="product-label new">
             <span>new</span>
@@ -42,7 +46,7 @@ function ProductCard() {
       </figure>
       <div className="product-caption">
         <p className="product-name">
-          <a href="#">Pink Sarees</a>
+          <Link to="/product-details">Pink Sarees</Link>
         </p>
         <div className="price-box">
           <span className="price-regular">$60.00</span>

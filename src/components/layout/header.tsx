@@ -108,7 +108,7 @@ function Header() {
                 <div className="dropdown-menu px-3 rounded-3 border-0 shadow">
                   <div className="row">
                     <div className="col-sm-6">
-                      <a href="#">
+                      <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-warning-subtle rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -121,10 +121,10 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
-                      <a href="#">
+                      <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-danger-subtle rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -137,10 +137,10 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
-                      <a href="#">
+                    <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-success-subtle rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -153,10 +153,10 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
-                      <a href="#">
+                      <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-secondary-subtle rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -169,10 +169,10 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
-                      <a href="#">
+                      <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-body-tertiary rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -185,10 +185,10 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
-                      <a href="#">
+                      <Link to="/collections">
                         <div className="d-flex align-items-center py-3 px-1 rounded-3">
                           <div className="icon px-3 bg-info-subtle rounded-3 fs-1">
                             <i className="fa-solid fa-shirt"></i>
@@ -201,7 +201,7 @@ function Header() {
                             </div>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

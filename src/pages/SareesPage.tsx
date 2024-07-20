@@ -1,7 +1,8 @@
 import React from "react";
+import ProductListPage from "./ProductListPage";
 
 function SareesPage() {
-  return <div>SareesPage</div>;
+  return <ProductListPage></ProductListPage>;
 }
 
 export default SareesPage;
