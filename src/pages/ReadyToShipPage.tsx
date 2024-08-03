@@ -1,7 +1,8 @@
 import React from "react";
+import ProductListPage from "./ProductListPage";
 
 function ReadyToShipPage() {
-  return <div>ReadyToShipPage</div>;
+  return (<ProductListPage></ProductListPage>);
 }
 
 export default ReadyToShipPage;

@@ -10,15 +10,42 @@ import Footer from "./components/layout/footer";
 import Body from "./components/layout/body";
 //import { BrowserRouter as Router } from "react-router-dom";
 import { HashRouter as Router } from "react-router-dom";
+import useLoginModal from "./hooks/useLoginModal";
+import LoginModal from "./pages/modals/LoginModal";
+import { rootContext, RootContext } from "./context/root.context";
 
 function App() {
+  const { shouldShowLoginModal, handleModalClose, showLoginModal } =
+    useLoginModal();
+  const rootContextData: RootContext = {
+    showLoginModal: shouldShowLoginModal,
+    handleShowLoginModal: showLoginModal,
+    handleLoginCloseModal: handleModalClose,
+    handleAddToCart: function (): void {
+      console.log('Add to cart handler');
+    },
+    handleAddToWishList: function (): void {
+      console.log('Add to wishlist handler');
+    },
+    removeFromCart: function (): void {
+      console.log('remove from cart');
+    },
+    removeFromWishList: function (): void {
+      console.log('remove from wishlist');
+    },
+    cartId: undefined,
+    userId: undefined
+  };
   return (
     <>
-      <Router>
-        <Header></Header>
-        <Body></Body>
-        <Footer></Footer>
-      </Router>
+      <rootContext.Provider value={rootContextData}>
+        <Router>
+          <Header></Header>
+          <Body></Body>
+          <Footer></Footer>
+        </Router>
+        <LoginModal></LoginModal>
+      </rootContext.Provider>
     </>
   );
 }

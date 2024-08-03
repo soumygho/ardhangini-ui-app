@@ -23,7 +23,7 @@ export const products = [
             "description": "image 1",
             "imageSource": "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
             "imageKey": "product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
-            "thumbnailSource": "product-thumbnail-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+            "thumbnailSource": "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-thumbnail-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
             "thumbnailKey": "product-thumbnail-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg"
           }
         ]
@@ -36,3 +36,12 @@ export const products = [
       "subcategory": "test-sub-category"
     }
   ];
+
+  export const wishListMock = [{
+    'productId': 'test',
+    'productTYpeId': 'test',
+    'productName': 'test',
+    'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+    'availableQuantity': 4,
+    'finalPricePerItem': '100'
+  }];

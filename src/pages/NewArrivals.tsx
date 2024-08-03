@@ -1,7 +1,8 @@
 import React from "react";
+import ProductListPage from "./ProductListPage";
 
 function NewArrivals() {
-  return <div>NewArrivals</div>;
+  return (<ProductListPage></ProductListPage>);
 }
 
 export default NewArrivals;

@@ -5652,11 +5652,11 @@ only screen and (max-width: 767.98px) {
     color: #fff;
 }
 
-.cart-table .table tr .pro-thumbnail,
-.cart-table .table tr .pro-price,
-.cart-table .table tr .pro-quantity,
-.cart-table .table tr .pro-subtotal,
-.cart-table .table tr .pro-remove {
+ .pro-thumbnail,
+ .pro-price,
+ .pro-quantity,
+ .pro-subtotal,
+ .pro-remove {
     width: 140px;
 }
 
