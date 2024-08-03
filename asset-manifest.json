@@ -1,13 +1,11 @@
 {
   "files": {
-    "main.css": "/ardhangini-ui-app/static/css/main.91024ea7.css",
-    "main.js": "/ardhangini-ui-app/static/js/main.97ee7a06.js",
+    "main.css": "/ardhangini-ui-app/static/css/main.bf61f641.css",
+    "main.js": "/ardhangini-ui-app/static/js/main.1fdf8ac2.js",
     "static/js/453.c023821b.chunk.js": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js",
     "static/media/desktop_banner.jpg": "/ardhangini-ui-app/static/media/desktop_banner.542f3b619f62f3c49aa2.jpg",
     "static/media/cancel.png": "/ardhangini-ui-app/static/media/cancel.5db131824953bc598b6e.png",
     "static/media/logo.png": "/ardhangini-ui-app/static/media/logo.5db131824953bc598b6e.png",
-    "static/media/blog-details-1.jpg": "/ardhangini-ui-app/static/media/blog-details-1.84b9e74b18ffa2e03e36.jpg",
-    "static/media/testimonials-bg.jpg": "/ardhangini-ui-app/static/media/testimonials-bg.267bfa3b8d10f917d884.jpg",
     "static/media/img1-top-floda2.jpg": "/ardhangini-ui-app/static/media/img1-top-floda2.2ec9259aa3f19622cc3d.jpg",
     "static/media/logo-1.jpg": "/ardhangini-ui-app/static/media/logo-1.44894cf9b2ee60d23af9.jpg",
     "static/media/logo-3.jpg": "/ardhangini-ui-app/static/media/logo-3.b3105e3b728f9589f71f.jpg",
@@ -22,12 +20,12 @@
     "static/media/slick.woff": "/ardhangini-ui-app/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/ardhangini-ui-app/index.html",
     "static/media/cupon.svg": "/ardhangini-ui-app/static/media/cupon.930f034e7894458e4f841b87df643152.svg",
-    "main.91024ea7.css.map": "/ardhangini-ui-app/static/css/main.91024ea7.css.map",
-    "main.97ee7a06.js.map": "/ardhangini-ui-app/static/js/main.97ee7a06.js.map",
+    "main.bf61f641.css.map": "/ardhangini-ui-app/static/css/main.bf61f641.css.map",
+    "main.1fdf8ac2.js.map": "/ardhangini-ui-app/static/js/main.1fdf8ac2.js.map",
     "453.c023821b.chunk.js.map": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91024ea7.css",
-    "static/js/main.97ee7a06.js"
+    "static/css/main.bf61f641.css",
+    "static/js/main.1fdf8ac2.js"
   ]
 }
