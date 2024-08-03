@@ -6,7 +6,7 @@ import makeinindia from "../../images/logo-4.jpg";
 
 function ServicePolicy() {
   return (
-    <section className="service-policy-area section-space pb-0 text-center">
+    <section className="service-policy-area section-space pt-0 text-center">
       <div className="container">
         <div className="row">
           <div className="col-12">

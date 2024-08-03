@@ -13,7 +13,52 @@ a {
     transition: 0.4s;
     text-decoration: none;
 }
-
+.nav-mega-section-title {
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-family: Avenir Next;
+}
+.nav-mega-section-title a {
+    position: relative;
+    display: block;
+}
+.nav-mega-section-title a {
+    color: #514e4e;
+    text-decoration: none !important;
+}
+.nav-mega-section-title {
+    margin-bottom: 20px;
+}
+.nav-mega-section-list {
+    list-style: none;
+    margin: 0 0 -7px;
+    padding: 0;
+}
+.nav-mega-section-list>li {
+    margin: 0 0 7px 0;
+}
+.nav-mega-section.full-flex-row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-height: 550px;
+    overflow: auto;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    z-index: 2;
+    padding: 30px 25px;
+    width: 100%;
+    display: flex;
+}
+.nav-mega-section-list>li>a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #514e4e;
+    opacity: .8;
+}
 a:hover,
 a:focus {
     color: #000;
@@ -6460,7 +6505,13 @@ only screen and (max-width: 767.98px) {
 .newsletter-inner .news-btn:hover {
     color: #88d1d9;
 }
-
+.sidebar-wrapper .accordion-button:not(.collapsed) {
+    background-color: #fff;
+}
+.sidebar-wrapper .accordion-button:focus {
+    outline: none;
+    box-shadow: none;
+}
 /*-------- footer bottom area start --------*/
 .footer-bottom-area {
     padding: 10px 0;
