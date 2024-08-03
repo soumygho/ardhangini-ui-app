@@ -4,16 +4,16 @@ function LoginPage() {
   return (
     <section>
     {/*!-- breadcrumb area start --*/}
-        <div className="breadcrumb-area common-bg">
+        <div className="breadcrumb-area">
             <div className="container">
                 <div className="row">
                     <div className="col-12">
                         <div className="breadcrumb-wrap">
                             <nav aria-label="breadcrumb">
-                                <h1>login/register</h1>
+                                <h1>login / register</h1>
                                 <ul className="breadcrumb">
                                     <li className="breadcrumb-item"><a href="index.html"><i className="fa fa-home"></i></a></li>
-                                    <li className="breadcrumb-item active" aria-current="page">login/register</li>
+                                    <li className="breadcrumb-item active" aria-current="page">login / register</li>
                                 </ul>
                             </nav>
                         </div>

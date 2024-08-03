@@ -757,7 +757,14 @@ fieldset legend {
 .common-bg {
     background-color: #f6f6f6;
 }
-
+.ag-center-cols-container .ag-cell {
+    display: flex;
+    align-items: center;
+}
+.pro-subtotal button {
+    color: #000;
+    padding: 5px;
+}
 .theme-color {
     background-color: #88d1d9;
 }
@@ -3473,13 +3480,13 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 /*------ Instagram Feed Area End ------*/
 /*----- breadcrumb style css start -----*/
 .breadcrumb-wrap {
-    padding: 65px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 @media only screen and (max-width: 767.98px) {
     .breadcrumb-wrap {
-        padding: 30px 0;
+        padding: 15px 0;
     }
 }
 
@@ -6511,6 +6518,15 @@ only screen and (max-width: 767.98px) {
 .sidebar-wrapper .accordion-button:focus {
     outline: none;
     box-shadow: none;
+}
+.modal-content .btn-close {
+    padding: 45px 20px 0 0;
+}
+.my-account svg {
+    margin-right: 10px;
+}
+.my-account button {
+    color: #111;
 }
 /*-------- footer bottom area start --------*/
 .footer-bottom-area {

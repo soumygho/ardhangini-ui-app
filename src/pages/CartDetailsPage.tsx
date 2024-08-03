@@ -45,7 +45,7 @@ function CartDetailsPage() {
   return (
     <main>
       {/*-- breadcrumb area start --*/}
-      <div className="breadcrumb-area common-bg">
+      <div className="breadcrumb-area">
         <div className="container">
           <div className="row">
             <div className="col-12">

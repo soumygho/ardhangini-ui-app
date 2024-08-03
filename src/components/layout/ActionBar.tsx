@@ -70,7 +70,7 @@ function ActionBar() {
                       className="text-dark"
                       onClick={root?.handleShowLoginModal}
                     >
-                      <i className="fas fa-sign-in-alt"></i> Login/Register
+                      <i className="fas fa-sign-in-alt"></i> Login / Register
                     </a>
                   </li>
                   <li>

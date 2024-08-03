@@ -3,7 +3,7 @@ import React from 'react'
 function AccountPage() {
   return (
     <main>
-        <div className="container py-5">
+        <div className="container my-account">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
                   <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="home" aria-selected="true"> 
