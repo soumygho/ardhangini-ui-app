@@ -2,10 +2,17 @@ import React, { useContext } from "react";
 import DeliveryAddressGrid from "./data-grid/DeliveryAddressGrid";
 import { deliveryMock } from "../mock/product.mock";
 import { headerContext } from "../context/header.context";
+import useAddDeliveryModal from "../hooks/useAddDeliveryModal";
+import AddDeliveryAddressModal from "./modals/AddDeliveryAddressModal";
 
 function SelectDeliveryAddress() {
   //fetch all delivery addresses for the user
   const context = useContext(headerContext);
+  const {
+    shouldShowAddDeliveryModal,
+    closeAddDeliveryModal,
+    showAddDeliveryModal,
+  } = useAddDeliveryModal();
   return (
     <main>
       {/*-- breadcrumb area end --*/}
@@ -43,8 +50,19 @@ function SelectDeliveryAddress() {
           </div>
         </div>
         <div className="row">
+          <div className="col-8">Select Delivery address</div>
+          <div className="col-4">
+            <a
+              className="btn btn__bg d-block"
+              style={{ marginBottom: "10px" }}
+              onClick={showAddDeliveryModal}
+            >
+              +Add New Address
+            </a>
+          </div>
+        </div>
+        <div className="row">
           <div className="col-lg-12">
-            <span>Select Delivery Address</span>
             <DeliveryAddressGrid
               rows={deliveryMock}
               showAction={false}
@@ -69,6 +87,10 @@ function SelectDeliveryAddress() {
       >
         Proceed To Checkout
       </a>
+      <AddDeliveryAddressModal
+        shouldShowModal={shouldShowAddDeliveryModal}
+        closeCb={closeAddDeliveryModal}
+      ></AddDeliveryAddressModal>
     </main>
   );
 }
