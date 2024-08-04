@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ardhangini-ui-app/static/css/main.172ee391.css",
-    "main.js": "/ardhangini-ui-app/static/js/main.d524616d.js",
+    "main.js": "/ardhangini-ui-app/static/js/main.f4b5b580.js",
     "static/js/453.c023821b.chunk.js": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js",
     "static/media/desktop_banner.jpg": "/ardhangini-ui-app/static/media/desktop_banner.542f3b619f62f3c49aa2.jpg",
     "static/media/cancel.png": "/ardhangini-ui-app/static/media/cancel.5db131824953bc598b6e.png",
@@ -21,11 +21,11 @@
     "index.html": "/ardhangini-ui-app/index.html",
     "static/media/cupon.svg": "/ardhangini-ui-app/static/media/cupon.930f034e7894458e4f841b87df643152.svg",
     "main.172ee391.css.map": "/ardhangini-ui-app/static/css/main.172ee391.css.map",
-    "main.d524616d.js.map": "/ardhangini-ui-app/static/js/main.d524616d.js.map",
+    "main.f4b5b580.js.map": "/ardhangini-ui-app/static/js/main.f4b5b580.js.map",
     "453.c023821b.chunk.js.map": "/ardhangini-ui-app/static/js/453.c023821b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.172ee391.css",
-    "static/js/main.d524616d.js"
+    "static/js/main.f4b5b580.js"
   ]
 }
