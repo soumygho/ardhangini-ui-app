@@ -21,17 +21,17 @@ function App() {
     showLoginModal: shouldShowLoginModal,
     handleShowLoginModal: showLoginModal,
     handleLoginCloseModal: handleModalClose,
-    handleAddToCart: function (): void {
-      console.log('Add to cart handler');
+    handleAddToCart: function (productid: string): void {
+      console.log(`Add to cart handler for product id: ${productid}`);
     },
-    handleAddToWishList: function (): void {
-      console.log('Add to wishlist handler');
+    handleAddToWishList: function (productid: string): void {
+      console.log(`Add to wishlist handler for product id: ${productid}`);
     },
-    removeFromCart: function (): void {
-      console.log('remove from cart');
+    removeFromCart: function (productid: string): void {
+      console.log(`remove from cart for product id: ${productid}`);
     },
-    removeFromWishList: function (): void {
-      console.log('remove from wishlist');
+    removeFromWishList: function (productid: string): void {
+      console.log(`remove from wishlist for product id: ${productid}`);
     },
     cartId: undefined,
     userId: undefined

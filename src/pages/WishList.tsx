@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { AgGridReact } from "ag-grid-react";
@@ -12,7 +12,15 @@ import AddToCartRenderer from "./modals/CellRenderers/AddToCartRenderer";
 import RemoveFromWishListRenderer from "./modals/CellRenderers/RemoveFromWishListRenderer";
 function WishList() {
   const gridRef = useRef<AgGridReact>(null);
-  const [rowData, setRowData] = useState<any[]>(wishListMock);
+  const [rowData, setRowData] = useState<any[]>([]);
+  //construct Mock data here
+  useEffect(() => {
+    const mockData = [];
+    for (var i = 0; i < 20; i++) {
+      mockData.push(wishListMock[0]);
+    }
+    setRowData(mockData);
+  }, []);
   // Column Definitions: Defines the columns to be displayed.
   const colDefs: ColDef[] = [
     { field: "productId", hide: true },

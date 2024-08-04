@@ -38,10 +38,81 @@ export const products = [
   ];
 
   export const wishListMock = [{
-    'productId': 'test',
-    'productTYpeId': 'test',
-    'productName': 'test',
-    'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
-    'availableQuantity': 4,
-    'finalPricePerItem': '100'
-  }];
+      'productId': 'test',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'availableQuantity': 4,
+      'finalPricePerItem': '100'
+    }];
+  
+    export const cartMock = {'cartLineItems' : [{
+      'productId': 'test1',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'quantity': 4,
+      'finalPricePerItem': 100,
+      'finalTotalPrice': 400,
+    },
+    {
+      'productId': 'test2',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'quantity': 2,
+      'finalPricePerItem': 150,
+      'finalTotalPrice': 300,
+    },
+    {
+      'productId': 'test3',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'quantity': 5,
+      'finalPricePerItem': 70,
+      'finalTotalPrice': 350,
+    },
+    {
+      'productId': 'test4',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'quantity': 6,
+      'finalPricePerItem': 200,
+      'finalTotalPrice': 1200,
+    },
+    {
+      'productId': 'test5',
+      'productTYpeId': 'test',
+      'productName': 'test',
+      'productThumbnail': "https://s3.ap-south-1.amazonaws.com/dev.ardhanginidesigns.com/product-933bca55-b518-4c98-87bf-c36d100bbe58.jpeg",
+      'quantity': 7,
+      'finalPricePerItem': 300,
+      'finalTotalPrice': 2100,
+    }],
+    'actualPrice': 5000,
+    'finaltotalPrice': 4350,
+    'totalCgst': 500,
+    'totalSgst': 500,
+    'shipping': 0,
+  };
+
+  export const deliveryMock = [
+    {
+      'id': 'test1',
+      'addressLine1': 'test1',
+      'addressLine2': 'test1',
+      'pin': '721424',
+      'state': 'WB',
+      'nickname': 'home',
+    },
+    {
+      'id': 'test2',
+      'addressLine1': 'test2',
+      'addressLine2': 'test2',
+      'pin': '721424',
+      'state': 'WB',
+      'nickname': 'office',
+    }
+  ]

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { rootContext } from "../../context/root.context";
 import WishListModal from "../../pages/modals/WishListModal";
@@ -12,6 +12,8 @@ import useAccountModal from "../../hooks/useAccountModal";
 import AccountDetailsModal from "../../pages/modals/AccountDetailsModal";
 import MenuBar from "./MenuBar";
 import ActionBar from "./ActionBar";
+import useDeliverySelectModal from "../../hooks/useDeliveryselectModal";
+import SelectDeliveryModal from "../../pages/modals/SelectDeliveryModal";
 
 function Header() {
   const context = useContext(rootContext);
@@ -27,6 +29,18 @@ function Header() {
     showCheckOutModal,
   } = useCheckOutModal();
 
+  const {
+    shouldShowDeliveryModal,
+    handleDeliveryModalClose,
+    showDeliveryModal,
+  } = useDeliverySelectModal();
+
+  const [cartDetails, setCartDetails] = useState<any>(undefined);
+  const [selectedDeliveryAddress, setselectedDeliveryAddress] =
+    useState<any>(undefined);
+  const [selectedBillingAddress, setselectedBillingAddress] =
+    useState<any>(undefined);
+
   const { shouldShowCartModal, closeCartModal, showCartModal } = useCartModal();
 
   const { shouldShowAccountModal, handleAccountModalClose, showAccountModal } =
@@ -34,7 +48,7 @@ function Header() {
 
   const handleCartProceed = () => {
     closeCartModal();
-    showCheckOutModal();
+    showDeliveryModal();
   };
 
   const headerContextData: HeaderContext = {
@@ -51,6 +65,26 @@ function Header() {
     shouldShowAccountModal: shouldShowAccountModal,
     showAccountModal: showAccountModal,
     hideAccountModal: handleAccountModalClose,
+    cartDetails: cartDetails,
+    selectedDeliveryAddress: selectedDeliveryAddress,
+    selectedBillingAddress: selectedBillingAddress,
+    setCartDetails: function (cartDetails: any): void {
+      setCartDetails(cartDetails);
+    },
+    setDeliveryAddress: function (address: any): void {
+      console.trace(address);
+      //setselectedDeliveryAddress(address);
+    },
+    setBillingAddress: function (address: any): void {
+      console.trace(address);
+      //setselectedBillingAddress(address);
+    },
+    handleDeliveryAddressProceed: function (): void {
+      handleDeliveryModalClose();
+      showCheckOutModal();
+    },
+    closeDeliverySelectionModal: handleDeliveryModalClose,
+    shouldShowSelectDeliveryModal: shouldShowDeliveryModal,
   };
   return (
     <>
@@ -73,6 +107,7 @@ function Header() {
         <CartDetailsModal></CartDetailsModal>
         <CheckoutModal></CheckoutModal>
         <AccountDetailsModal></AccountDetailsModal>
+        <SelectDeliveryModal></SelectDeliveryModal>
       </headerContext.Provider>
     </>
   );

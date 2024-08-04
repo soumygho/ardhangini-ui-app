@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Modal } from 'react-bootstrap'
 import { headerContext } from '../../context/header.context'
 import CartDetailsPage from '../CartDetailsPage';
+import { cartMock } from '../../mock/product.mock';
 
 function CartDetailsModal() {
     const context = useContext(headerContext);
@@ -17,7 +18,7 @@ function CartDetailsModal() {
         </Modal.Header>
   
         <Modal.Body>
-          <CartDetailsPage></CartDetailsPage>
+          <CartDetailsPage cart={cartMock} isOrderDetails={false} ></CartDetailsPage>
         </Modal.Body>
       </Modal>
   )
