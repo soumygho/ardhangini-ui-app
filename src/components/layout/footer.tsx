@@ -237,7 +237,7 @@ function Footer() {
             <li>
               <a href="#">
                 <i className="fas fa-sign-in-alt"></i>
-                <p>Login / Register</p>
+                <p>Login</p>
               </a>
             </li>
           </ul>
