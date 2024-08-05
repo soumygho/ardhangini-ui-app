@@ -220,6 +220,30 @@ function Footer() {
           </aside>
         </div>
 
+
+        <div className="footer-fixed d-tab-lg-none">
+          <ul>
+            <li>
+              <a href="#"><i className="fa-solid fa-basket-shopping"></i>
+                <p>Bag</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="fa-regular fa-user"></i>
+                <p>Account</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="fas fa-sign-in-alt"></i>
+                <p>Login / Register</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
         <div className="copyrights-wrapper copyrights-two-columns">
           <div className="container">
             <div className="min-footer">
