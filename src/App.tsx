@@ -13,10 +13,28 @@ import { HashRouter as Router } from "react-router-dom";
 import useLoginModal from "./hooks/useLoginModal";
 import LoginModal from "./pages/modals/LoginModal";
 import { rootContext, RootContext } from "./context/root.context";
+import useCategories from "./hooks/api/useCategories";
+import useCollections from "./hooks/api/useCollections";
+import useColors from "./hooks/api/useColors";
+import useFabrics from "./hooks/api/useFabrics";
+import usePrints from "./hooks/api/usePrints";
+import useProductOccassions from "./hooks/api/useProductOccassions";
+import useStyles from "./hooks/api/useStyles";
+import useSubCategories from "./hooks/api/useSubCategories";
 
 function App() {
   const { shouldShowLoginModal, handleModalClose, showLoginModal } =
     useLoginModal();
+
+  const { categories, getAllCategories } = useCategories();
+  const { collections, getAllCollections } = useCollections();
+  const { productColors, getAllProductColors } = useColors();
+  const { productFabrics, getAllProductFabrics } = useFabrics();
+  const { productPrints, getAllProductPrints } = usePrints();
+  const { productOccassions, getAllProductOccassions } = useProductOccassions();
+  const { productStyles, getAllProductStyles } = useStyles();
+  const { subcategories, getAllSubCategories } = useSubCategories();
+
   const rootContextData: RootContext = {
     showLoginModal: shouldShowLoginModal,
     handleShowLoginModal: showLoginModal,
@@ -34,7 +52,15 @@ function App() {
       console.log(`remove from wishlist for product id: ${productid}`);
     },
     cartId: undefined,
-    userId: undefined
+    userId: undefined,
+    categories: [],
+    subCategories: [],
+    collections: [],
+    fabrics: [],
+    colors: [],
+    syles: [],
+    prints: [],
+    occassions: [],
   };
   return (
     <>
