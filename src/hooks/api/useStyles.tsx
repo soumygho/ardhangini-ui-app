@@ -1,12 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ProductStyleApi, ProductStyleEntity } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useStyles = () => {
   const [productStyles, setProductStyles] = useState<ProductStyleEntity[]>([]);
+  const { getAxiosConfiguration } = useAxiosConfiguration();
+  
   const getAllProductStyles = useMemo(
     () => () => {
-      const api: ProductStyleApi = new ProductStyleApi(config);
+      const api: ProductStyleApi = new ProductStyleApi(getAxiosConfiguration());
       api
         .productStyleControllerGetAll()
         .then((resp) => {

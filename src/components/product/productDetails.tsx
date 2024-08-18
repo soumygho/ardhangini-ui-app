@@ -1,52 +1,56 @@
 import React from "react";
 import ProductImageCarousel from "./ProductImageCarousel";
 import couponSvg from "../../images/cupon.svg";
-
-function productDetails() {
+import {
+  ProductSnapshotDto,
+  ProductSnapshotWithUserDto,
+} from "../../services/openapi";
+import { Rating } from "react-simple-star-rating";
+interface ProductCardProps {
+  productData: ProductSnapshotDto | ProductSnapshotWithUserDto;
+}
+function productDetails({ productData }: ProductCardProps) {
   return (
     <div className="product-details-inner">
       <div className="row">
         <div className="col-lg-6">
-          <ProductImageCarousel></ProductImageCarousel>
+          <ProductImageCarousel
+            productData={productData}
+          ></ProductImageCarousel>
         </div>
         <div className="col-lg-6">
           <div className="product-details-des">
-            <h3 className="product-name">Flowers daisy pink stick</h3>
+            <h3 className="product-name">{productData?.productname}</h3>
             <div className="ratings d-flex">
-              <span>
-                <i className="lnr lnr-star"></i>
-              </span>
-              <span>
-                <i className="lnr lnr-star"></i>
-              </span>
-              <span>
-                <i className="lnr lnr-star"></i>
-              </span>
-              <span>
-                <i className="lnr lnr-star"></i>
-              </span>
-              <span>
-                <i className="lnr lnr-star"></i>
-              </span>
+              <Rating
+                initialValue={productData?.averageReview}
+                readonly={true}
+              ></Rating>
               <div className="pro-review">
-                <span>1 Reviews</span>
+                <span>{productData?.noOfReviews} Reviews</span>
               </div>
             </div>
             <div className="price-box">
-              <span className="price-regular">$70.00</span>
+              <span className="price-regular">{productData?.offerprice}</span>
               <span className="price-old">
-                <del>$90.00</del>
+                <del>{productData?.actualprice}</del>
               </span>
             </div>
             <div className="availability">
               <i className="fa fa-check-circle"></i>
-              <span>200 in stock</span>
+              <span>
+                {productData?.availableQuantity > 0
+                  ? `${productData.availableQuantity} in stock`
+                  : "Out of Stock"}
+              </span>
             </div>
             <p className="pro-desc">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              {productData?.productdescription
+                ? productData?.productdescription
+                : `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua. Phasellus id nisi quis justo tempus
-              mollis sed et dui. In hac habitasse platea dictumst.
+              mollis sed et dui. In hac habitasse platea dictumst.`}
             </p>
             <div className="quantity-cart-box d-flex align-items-center">
               <h5>qty:</h5>

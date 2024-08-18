@@ -1,12 +1,17 @@
 import { CustomCellRendererProps } from "ag-grid-react";
 import React, { useCallback, useContext } from "react";
 import { rootContext } from "../../../context/root.context";
+import { cartDetailsContext } from "../../../context/cart-details.context";
 
 function RemoveFromCartRenderer(props: CustomCellRendererProps) {
-  const context = useContext(rootContext);
+  const root = useContext(rootContext);
+  const context = useContext(cartDetailsContext);
 
   const removeFromCartFn = useCallback(() => {
-    context?.removeFromCart(props?.data?.productId);
+    root?.removeFromCart(props?.data?.productId, props?.data?.productTypeId);
+    if (root?.userId) {
+      context?.getAllCartDetailsData(root?.userId);
+    }
   }, []);
 
   return (

@@ -1,23 +1,26 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-class DeliveryFormDto {
-  firstName: string | undefined;
-  lastName: string | undefined;
-  addressLine1: string | undefined;
-  addressLine2: string | undefined;
-  pin: string | undefined;
-  state: string | undefined;
-  town: string | undefined;
-  mobileNumber: string | undefined;
+import {
+  DeliveryAddressEntity,
+  UpdateDeliveryAddressDto,
+} from "../services/openapi";
+
+interface AddDeliveryAddressPageProps {
+  submitCallBack: (data: UpdateDeliveryAddressDto) => void;
+  deliveryAddress?: DeliveryAddressEntity;
 }
-function AddDeliveryPage(deliveryAddress?: any) {
+function AddDeliveryPage({
+  submitCallBack,
+  deliveryAddress,
+}: AddDeliveryAddressPageProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<DeliveryFormDto>();
-  const onSubmit: SubmitHandler<DeliveryFormDto> = (data) => {
+  } = useForm<UpdateDeliveryAddressDto>();
+  const onSubmit: SubmitHandler<UpdateDeliveryAddressDto> = (data) => {
     console.trace(data);
+    submitCallBack(data);
   };
   return (
     <div className="checkout-billing-details-wrap">
@@ -119,12 +122,12 @@ function AddDeliveryPage(deliveryAddress?: any) {
               Postcode / ZIP
             </label>
             <input
-              type="text"
+              type="number"
               id="postcode"
               placeholder="Postcode / ZIP"
               {...register("pin", {
                 required: true,
-                value: deliveryAddress ? deliveryAddress?.pin : "",
+                value: deliveryAddress ? deliveryAddress?.pin : 0,
               })}
             />
           </div>

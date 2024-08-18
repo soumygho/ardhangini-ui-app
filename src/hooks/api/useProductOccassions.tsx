@@ -3,15 +3,20 @@ import {
   ProductOccassionApi,
   ProductOccassionEntity,
 } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useProductOccassions = () => {
   const [productOccassions, setProductOccassions] = useState<
     ProductOccassionEntity[]
   >([]);
+  const { getAxiosConfiguration } = useAxiosConfiguration();
+  
   const getAllProductOccassions = useMemo(
     () => () => {
-      const api: ProductOccassionApi = new ProductOccassionApi(config);
+      const api: ProductOccassionApi = new ProductOccassionApi(
+        getAxiosConfiguration()
+      );
       api
         .productOccassionControllerGetAll()
         .then((resp) => {

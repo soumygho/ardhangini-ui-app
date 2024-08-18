@@ -1,17 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
 import {
+  Configuration,
   FabricDetailsApiApi,
   FabricDetailsEntity,
 } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useFabrics = () => {
   const [productFabrics, setProductFabrics] = useState<FabricDetailsEntity[]>(
     []
   );
+  const { getAxiosConfiguration } = useAxiosConfiguration();
+  
   const getAllProductFabrics = useMemo(
     () => () => {
-      const api: FabricDetailsApiApi = new FabricDetailsApiApi(config);
+      const api: FabricDetailsApiApi = new FabricDetailsApiApi(
+        getAxiosConfiguration()
+      );
       api
         .fabricControllerFindAll()
         .then((resp) => {

@@ -5,7 +5,13 @@ import { rootContext } from "../../../context/root.context";
 function AddToCartRenderer(props: CustomCellRendererProps) {
   const context = useContext(rootContext);
   const addToCartFn = useCallback(() => {
-    context?.handleAddToCart(props?.data?.productId);
+    context?.handleAddToCart([
+      {
+        productId: props?.data?.productId,
+        quantity: 1,
+        typeId: props?.data?.productTypeId,
+      },
+    ]);
   }, []);
   return (
     <div className="pro-subtotal">

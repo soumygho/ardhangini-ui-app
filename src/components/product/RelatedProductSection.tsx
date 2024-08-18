@@ -1,7 +1,14 @@
-import React from "react";
 import RelatedProductsCarousel from "./RelatedProductsCarousel";
+import {
+  ProductSnapshotDto,
+  ProductSnapshotWithUserDto,
+} from "../../services/openapi";
 
-function RelatedProductSection() {
+function RelatedProductSection({
+  products,
+}: {
+  products: ProductSnapshotDto[] | ProductSnapshotWithUserDto[];
+}) {
   return (
     <section className="related-products">
       <div className="container">
@@ -19,8 +26,10 @@ function RelatedProductSection() {
         <div className="row">
           <div className="col-lg-12">
             <div className="product-carousel--4 slick-row-15 slick-sm-row-10 slick-arrow-style">
-                {/*Related products carousel component*/}
-                <RelatedProductsCarousel></RelatedProductsCarousel>
+              {/*Related products carousel component*/}
+              <RelatedProductsCarousel
+                products={products}
+              ></RelatedProductsCarousel>
             </div>
           </div>
         </div>

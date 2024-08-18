@@ -14,6 +14,7 @@ import MenuBar from "./MenuBar";
 import ActionBar from "./ActionBar";
 import useDeliverySelectModal from "../../hooks/useDeliveryselectModal";
 import SelectDeliveryModal from "../../pages/modals/SelectDeliveryModal";
+import { DeliveryAddressEntity } from "../../services/openapi";
 
 function Header() {
   const context = useContext(rootContext);
@@ -36,10 +37,12 @@ function Header() {
   } = useDeliverySelectModal();
 
   const [cartDetails, setCartDetails] = useState<any>(undefined);
-  const [selectedDeliveryAddress, setselectedDeliveryAddress] =
-    useState<any>(undefined);
-  const [selectedBillingAddress, setselectedBillingAddress] =
-    useState<any>(undefined);
+  const [selectedDeliveryAddress, setselectedDeliveryAddress] = useState<
+    DeliveryAddressEntity | undefined
+  >(undefined);
+  const [selectedBillingAddress, setselectedBillingAddress] = useState<
+    DeliveryAddressEntity | undefined
+  >(undefined);
 
   const { shouldShowCartModal, closeCartModal, showCartModal } = useCartModal();
 
@@ -53,17 +56,35 @@ function Header() {
 
   const headerContextData: HeaderContext = {
     showWishListModal: shouldShowWishListModal,
-    handleShowWishListModal: showWishListModal,
+    handleShowWishListModal: () => {
+      if (context?.userId) {
+        showWishListModal();
+      } else {
+        context?.handleShowLoginModal();
+      }
+    },
     handleWishListCloseModal: handleWishListModalClose,
     showCartModal: shouldShowCartModal,
-    handleShowCartModal: showCartModal,
+    handleShowCartModal: () => {
+      if (context?.userId) {
+        showCartModal();
+      } else {
+        context?.handleShowLoginModal();
+      }
+    },
     handleCartCloseModal: closeCartModal,
     handleCartProceed: handleCartProceed,
     shouldShowCheckOutModal: shouldShowCheckoutModal,
     showCheckOutModal: showCheckOutModal,
     closeCheckOutModal: handleCheckOutModalClose,
     shouldShowAccountModal: shouldShowAccountModal,
-    showAccountModal: showAccountModal,
+    showAccountModal: () => {
+      if (context?.userId) {
+        showAccountModal();
+      } else {
+        context?.handleShowLoginModal();
+      }
+    },
     hideAccountModal: handleAccountModalClose,
     cartDetails: cartDetails,
     selectedDeliveryAddress: selectedDeliveryAddress,
@@ -71,13 +92,15 @@ function Header() {
     setCartDetails: function (cartDetails: any): void {
       setCartDetails(cartDetails);
     },
-    setDeliveryAddress: function (address: any): void {
-      console.trace(address);
-      //setselectedDeliveryAddress(address);
+    setDeliveryAddress: function (address: DeliveryAddressEntity): void {
+      setselectedDeliveryAddress(() => address);
+      console.trace("selectedDeliveryAddress");
+      console.trace(selectedDeliveryAddress);
     },
-    setBillingAddress: function (address: any): void {
-      console.trace(address);
-      //setselectedBillingAddress(address);
+    setBillingAddress: function (address: DeliveryAddressEntity): void {
+      setselectedBillingAddress(() => address);
+      console.trace("selectedBillingAddress");
+      console.trace(selectedBillingAddress);
     },
     handleDeliveryAddressProceed: function (): void {
       handleDeliveryModalClose();

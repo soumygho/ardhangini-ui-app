@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
+import { SareeFilter, SareeFilterFilterTypeEnum } from "../../services/openapi";
+import { rootContext } from "../../context/root.context";
 
 function MenuBar() {
+  const root = useContext(rootContext);
+  const buildFilter = useMemo(
+    () =>
+      (
+        filterType: SareeFilterFilterTypeEnum,
+        filterValue?: string
+      ): SareeFilter => {
+        const filter = filterValue
+          ? { filterType: filterType, values: [filterValue] }
+          : { filterType: filterType, values: [] };
+        return filter;
+      },
+    []
+  );
+
+  const handleClick = useCallback(
+    (filterType: SareeFilterFilterTypeEnum, filterValue?: string) => {
+      root?.setPrimaryFilter(buildFilter(filterType, filterValue));
+    },
+    []
+  );
   return (
     <nav className="navbar navbar-expand-lg shadow-sm bg-light navbar-light sticky-top">
       <div className="container-fluid">
@@ -30,17 +53,20 @@ function MenuBar() {
                 className="nav-link active"
                 aria-current="page"
                 to="/newarrivals"
+                onClick={() => handleClick(SareeFilterFilterTypeEnum.New)}
               >
                 New Arrivals
               </Link>
             </li>
-            <li className="nav-item dropdown mega-dropdown">
+            <li className="nav-item">
               <Link
-                className="nav-link dropdown-toggle"
-                to="/collections"
+                className="nav-link"
+                aria-current="page"
+                to="/sarees"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                onClick={() => handleClick(SareeFilterFilterTypeEnum.None)}
               >
                 Collections
               </Link>
@@ -48,188 +74,199 @@ function MenuBar() {
                 <div className="nav-mega-section row  full-flex-row ">
                   <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <a href="#">WEAVES</a>
+                      <span>Collections</span>
                     </h5>
                     <ul className="nav-mega-section-list">
-                      <li>
-                        <a href="#">Banarasi Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Paithani Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Kanjivaram Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Patola Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Organza Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">South Silk Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Maheshwari Silk Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Luxe Collection</a>
-                      </li>
+                      {root?.collections?.map((value, indexF) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/collections"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Collection,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li className="nav-item dropdown mega-dropdown">
+              <Link
+                className="nav-link dropdown-toggle"
+                to="/sarees"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sarees Quest
+              </Link>
+              <div className="dropdown-menu px-3 rounded-3 border-0 shadow w-100">
+                <div className="nav-mega-section row  full-flex-row ">
+                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                    <h5 className="nav-mega-section-title">
+                      <span>WEAVES</span>
+                    </h5>
+                    <ul className="nav-mega-section-list">
+                      {root?.subCategories?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Subcategory,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
                   <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <a href="#">FABRIC</a>
+                      <span>FABRIC</span>
                     </h5>
                     <ul className="nav-mega-section-list">
-                      <li>
-                        <a href="#">Silk Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Cotton Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Linen Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Chiffon Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Satin Silk Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Georgette Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Dola Silk Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Brasso Saree</a>
-                      </li>
+                      {root?.fabrics?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Fabric,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.fabricName}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
                   <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <a href="#">PRINTS</a>
+                      <span>PRINTS</span>
                     </h5>
                     <ul className="nav-mega-section-list">
-                      <li>
-                        <a href="#">Printed Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Kalamkari Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Ajrakh Sarees</a>
-                      </li>
+                      {root?.prints?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Print,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
                   <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <a href="#">COLOUR</a>
+                      <span>COLOUR</span>
                     </h5>
                     <ul className="nav-mega-section-list">
-                      <li>
-                        <a href="#">Black Saree</a>
-                      </li>
+                      {root?.colors?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Color,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                      <li>
-                        <a href="#">Red Saree</a>
-                      </li>
+                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                    <h5 className="nav-mega-section-title">
+                      <span>Occasion</span>
+                    </h5>
+                    <ul className="nav-mega-section-list">
+                      {root?.occassions?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Occassion,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                      <li>
-                        <a href="#">Pink Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Blue Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Golden Saree</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Purple Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Green Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Grey Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Magenta Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Maroon Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Orange sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Yellow Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Multicolor Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Brown Sarees</a>
-                      </li>
-
-                      <li>
-                        <a href="#">Turquoise Sarees</a>
-                      </li>
+                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                    <h5 className="nav-mega-section-title">
+                      <span>Style</span>
+                    </h5>
+                    <ul className="nav-mega-section-list">
+                      {root?.syles?.map((value, index) => (
+                        <li key={value?.id}>
+                          <Link
+                            to="/sarees"
+                            onClick={() =>
+                              handleClick(
+                                SareeFilterFilterTypeEnum.Style,
+                                value?.id
+                              )
+                            }
+                          >
+                            {value?.name}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
               </div>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/sarees">
-                Sarees
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/giftcards">
-                Gift Card
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/offers">
-                Offer/Sale
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/readytoship">
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/readytoship"
+                onClick={() => handleClick(SareeFilterFilterTypeEnum.Shippable)}
+              >
                 Ready to Ship
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to={{ pathname: "/sarees", search: "filter=exclusive" }}
+                onClick={() => handleClick(SareeFilterFilterTypeEnum.Exclusive)}
+              >
+                Ardhangini Exclusive
               </Link>
             </li>
           </ul>

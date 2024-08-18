@@ -1,16 +1,19 @@
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   CartApi,
   CartDetailsResponse,
   CartUpdateDto,
 } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useCartApi = () => {
   const [cartDetails, setCartDetails] = useState<CartDetailsResponse>();
+  const { getAxiosConfiguration } = useAxiosConfiguration();
+  
   const getCartDetails = useMemo(
     () => (userId: string) => {
-      const api: CartApi = new CartApi(config);
+      const api: CartApi = new CartApi(getAxiosConfiguration());
       api
         .cartControllerGetCartByUserId(userId)
         .then((resp) => {
@@ -28,12 +31,13 @@ const useCartApi = () => {
 
   const removeFromCart = useMemo(
     () => (dto: CartUpdateDto) => {
-      const api: CartApi = new CartApi(config);
+      const api: CartApi = new CartApi(getAxiosConfiguration());
       api
         .cartControllerRemoveFromCart(dto)
         .then((resp) => {
           if (resp) {
             setCartDetails(resp?.data);
+            showToast("Removed from cart.");
           }
         })
         .catch((e) => {
@@ -45,12 +49,13 @@ const useCartApi = () => {
   );
   const addToCart = useMemo(
     () => (dto: CartUpdateDto) => {
-      const api: CartApi = new CartApi(config);
+      const api: CartApi = new CartApi(getAxiosConfiguration());
       api
         .cartControllerAddToCart(dto)
         .then((resp) => {
           if (resp) {
             setCartDetails(resp?.data);
+            showToast("Added to cart.");
           }
         })
         .catch((e) => {

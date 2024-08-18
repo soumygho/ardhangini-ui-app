@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import { SubcategoryApi, SubcategoryEntity } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useSubCategories = () => {
   const [subcategories, setSubCategories] = useState<SubcategoryEntity[]>([]);
+  const { getAxiosConfiguration } = useAxiosConfiguration();
   const getAllSubCategories = useMemo(
     () => () => {
-      const api: SubcategoryApi = new SubcategoryApi(config);
+      const api: SubcategoryApi = new SubcategoryApi(getAxiosConfiguration());
       api
         .subcategoryControllerFindAll()
         .then((resp) => {

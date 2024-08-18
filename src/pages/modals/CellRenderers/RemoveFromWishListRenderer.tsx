@@ -1,12 +1,19 @@
 import React, { useCallback, useContext } from "react";
-import { headerContext } from "../../../context/header.context";
 import { CustomCellRendererProps } from "ag-grid-react";
 import { rootContext } from "../../../context/root.context";
+import { wishListContext } from "../../../context/wish-list.context";
 
 function RemoveFromWishListRenderer(props: CustomCellRendererProps) {
-  const context = useContext(rootContext);
+  const root = useContext(rootContext);
+  const context = useContext(wishListContext);
   const removeFromWishListFn = useCallback(() => {
-    context?.removeFromWishList(props?.data?.productId);
+    root?.removeFromWishList(
+      props?.data?.productId,
+      props?.data?.productTypeId
+    );
+    if (root?.userId) {
+      context?.getAllWishListData(root.userId);
+    }
   }, []);
   return (
     <div className="pro-remove">

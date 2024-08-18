@@ -2,15 +2,24 @@ import { useMemo, useState } from "react";
 import {
   CustomerSareeDetailsApi,
   ProductSnapshotDto,
+  ProductSnapshotWithUserDto,
   SareeFilterDto,
 } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useSareeDetailsApi = () => {
-  const [sarees, setSarees] = useState<ProductSnapshotDto[]>([]);
+  const [sarees, setSarees] = useState<
+    ProductSnapshotWithUserDto[] | ProductSnapshotDto[]
+  >([]);
+  const { getAxiosConfiguration } = useAxiosConfiguration();
+  
+
   const getAllSarees = useMemo(
     () => (filter: SareeFilterDto) => {
-      const api: CustomerSareeDetailsApi = new CustomerSareeDetailsApi(config);
+      const api: CustomerSareeDetailsApi = new CustomerSareeDetailsApi(
+        getAxiosConfiguration()
+      );
       api
         .sareeControllerGetAll(filter)
         .then((resp) => {
@@ -26,7 +35,27 @@ const useSareeDetailsApi = () => {
     []
   );
 
-  return { sarees, getAllSarees };
+  const getRelatedSarees = useMemo(
+    () => (sareeId: string) => {
+      const api: CustomerSareeDetailsApi = new CustomerSareeDetailsApi(
+        getAxiosConfiguration()
+      );
+      api
+        .sareeControllerGetRelatedSarees(sareeId)
+        .then((resp) => {
+          if (resp) {
+            setSarees(resp?.data);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          showToast("Could not reach out to backend.");
+        });
+    },
+    []
+  );
+
+  return { sarees, getAllSarees, getRelatedSarees };
 };
 
 export default useSareeDetailsApi;

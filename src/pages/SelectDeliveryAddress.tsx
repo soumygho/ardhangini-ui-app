@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import DeliveryAddressGrid from "./data-grid/DeliveryAddressGrid";
 import { deliveryMock } from "../mock/product.mock";
 import { headerContext } from "../context/header.context";
 import useAddDeliveryModal from "../hooks/useAddDeliveryModal";
 import AddDeliveryAddressModal from "./modals/AddDeliveryAddressModal";
+import useDeliveryAddressApi from "../hooks/api/useDeliveryAddressApi";
+import { Button } from "react-bootstrap";
 
 function SelectDeliveryAddress() {
   //fetch all delivery addresses for the user
@@ -13,6 +15,17 @@ function SelectDeliveryAddress() {
     closeAddDeliveryModal,
     showAddDeliveryModal,
   } = useAddDeliveryModal();
+  const {
+    deliveryAddresses,
+    isDeliveryAddressUpdated,
+    addOrUpdateDeliveryAddress,
+    removeDeliveryAddressesForCurrentUser,
+    getDeliveryAddressesForCurrentUser,
+  } = useDeliveryAddressApi();
+
+  useEffect(() => {
+    getDeliveryAddressesForCurrentUser();
+  }, [isDeliveryAddressUpdated]);
   return (
     <main>
       {/*-- breadcrumb area end --*/}
@@ -64,7 +77,7 @@ function SelectDeliveryAddress() {
         <div className="row">
           <div className="col-lg-12">
             <DeliveryAddressGrid
-              rows={deliveryMock}
+              rows={deliveryAddresses}
               showAction={false}
               selectGridFn={context?.setDeliveryAddress}
             ></DeliveryAddressGrid>
@@ -74,22 +87,26 @@ function SelectDeliveryAddress() {
           <div className="col-lg-12">
             <span>Select Billing Address</span>
             <DeliveryAddressGrid
-              rows={deliveryMock}
+              rows={deliveryAddresses}
               showAction={false}
               selectGridFn={context?.setBillingAddress}
             ></DeliveryAddressGrid>
           </div>
         </div>
       </div>
-      <a
+      <Button
         className="btn btn__bg d-block"
         onClick={context?.handleDeliveryAddressProceed}
+        disabled={
+          !context?.selectedBillingAddress || !context?.selectedDeliveryAddress
+        }
       >
         Proceed To Checkout
-      </a>
+      </Button>
       <AddDeliveryAddressModal
         shouldShowModal={shouldShowAddDeliveryModal}
         closeCb={closeAddDeliveryModal}
+        submitCallBack={addOrUpdateDeliveryAddress}
       ></AddDeliveryAddressModal>
     </main>
   );

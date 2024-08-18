@@ -1,9 +1,11 @@
-import React from "react";
 import Slider, { Settings } from "react-slick";
 import ProductCard from "./ProductCard";
-
-function RelatedProductsCarousel() {
-  const data = [1, 2, 3, 4, 5];
+import { ProductSnapshotDto } from "../../services/openapi";
+import { ProductSnapshotWithUserDto } from "../../services/openapi/api";
+interface RelatedProductsCarouselProps {
+  products: ProductSnapshotDto[] | ProductSnapshotWithUserDto[];
+}
+function RelatedProductsCarousel({ products }: RelatedProductsCarouselProps) {
   const sliderSettings: Settings = {
     autoplay: false,
     speed: 1000,
@@ -37,8 +39,8 @@ function RelatedProductsCarousel() {
   };
   return (
     <Slider {...sliderSettings}>
-      {data.map((product, index) => (
-        <ProductCard key={index}></ProductCard>
+      {products?.map((product, index) => (
+        <ProductCard productData={product} key={index}></ProductCard>
       ))}
     </Slider>
   );

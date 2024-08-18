@@ -1,12 +1,31 @@
-import ProductCard from '../product/ProductCard';
+import { useContext, useEffect } from "react";
+import ProductCard from "../product/ProductCard";
 import { Link } from "react-router-dom";
+import { config, rootContext } from "../../context/root.context";
+import { SareeFilterDto } from "../../services/openapi";
+import useSareeDetailsApi from "../../hooks/api/useSareeApi";
 interface ProductStripProps {
   title: string;
 }
 
 function TrendingProducts({ title }: ProductStripProps) {
+  const root = useContext(rootContext);
+  const { sarees, getAllSarees } = useSareeDetailsApi();
+
+  const sareeFilterDto: SareeFilterDto = {
+    userId: root?.userId,
+    filters: [
+      {
+        filterType: "trending",
+      },
+    ],
+  };
+
+  useEffect(() => {
+    getAllSarees(sareeFilterDto);
+  }, [config]);
+
   //show only top 4 trendiing products
-  const products = [1, 2, 3, 4];
   return (
     <section className="our-product section-space">
       <div className="container">
@@ -22,9 +41,9 @@ function TrendingProducts({ title }: ProductStripProps) {
           </div>
         </div>
         <div className="row mtn-40">
-          {products.map((index) => (
+          {sarees?.map((value, index) => (
             <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
-              <ProductCard />
+              <ProductCard productData={value} />
             </div>
           ))}
           <div className="col-12">

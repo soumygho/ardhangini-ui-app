@@ -11,6 +11,7 @@ import NewArrivals from "../../pages/NewArrivals";
 import SareesPage from "../../pages/SareesPage";
 import BreadCrumb from "./BreadCrumb";
 import ProductDetailsPage from "../../pages/ProductDetailsPage";
+import ArdhanginiExclusive from "../../pages/ArdhanginiExclusive";
 
 function Body() {
   return (
@@ -25,6 +26,7 @@ function Body() {
           <Route path="readytoship" element={<ReadyToShipPage />} />
           <Route path="newarrivals" element={<NewArrivals />} />
           <Route path="sarees" element={<SareesPage />} />
+          <Route path="exclusives" element={<ArdhanginiExclusive />} />
           <Route path="product-details" element={<ProductDetailsPage />}/>
           <Route path="*" element={<NoPage />} />
         </Route>

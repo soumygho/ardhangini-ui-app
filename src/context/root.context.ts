@@ -6,6 +6,7 @@ import {
   SubcategoryEntity,
 } from "../services/openapi";
 import {
+  CartLineItemDto,
   FabricDetailsEntity,
   ProductColorEntity,
   ProductOccassionEntity,
@@ -21,10 +22,10 @@ export interface RootContext {
   userId?: string;
   handleShowLoginModal: () => void;
   handleLoginCloseModal: () => void;
-  handleAddToCart: (productId: string) => void;
-  handleAddToWishList: (productId: string) => void;
-  removeFromCart: (productId: string) => void;
-  removeFromWishList: (productId: string) => void;
+  handleAddToCart: (lineItems: CartLineItemDto[]) => void;
+  handleAddToWishList: (productId: string, productTypeId: string) => void;
+  removeFromCart: (productId: string, productTypeId: string) => void;
+  removeFromWishList: (productId: string, productTypeId: string) => void;
   categories: CategoryEntity[];
   subCategories: SubcategoryEntity[];
   collections: ProductCollectionEntity[];
@@ -34,14 +35,21 @@ export interface RootContext {
   prints: ProductPrintsEntity[];
   occassions: ProductOccassionEntity[];
   selectedPrimarySareeFilter?: SareeFilter;
+  setPrimaryFilter: (filter: SareeFilter) => void;
+  setUserId: (userId: string) => void;
 }
-
+//this is used to declare static dependency to remove repeated rendering
+export const config = {};
 export const rootContext = createContext<RootContext | null>(null);
-export const config: Configuration = new Configuration();
-config.basePath = process.env.REACT_APP_BACKEND_URL; //"http://localhost:3001"; //process.env.REACT_APP_BACKEND_URL;
+//"http://localhost:3001"; //process.env.REACT_APP_BACKEND_URL;
 
 export const showToast = (message: string) =>
   toast(message, { autoClose: 100 });
 export const defaultColDef = {
   flex: 1,
+};
+
+export const handleApiError = (e: any) => {
+  console.error(e);
+  showToast("Unable to connect to backend.");
 };

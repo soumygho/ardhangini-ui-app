@@ -1,7 +1,15 @@
 import React from "react";
 import avatar from "../../images/avatar.jpg";
+import {
+  ProductSnapshotDto,
+  ProductSnapshotWithUserDto,
+} from "../../services/openapi/api";
 
-function ProductDetailsTab() {
+function ProductDetailsTab({
+  productdata,
+}: {
+  productdata: ProductSnapshotDto | ProductSnapshotWithUserDto;
+}) {
   return (
     <div className="product-details-reviews section-space pb-0">
       <div className="row">
@@ -27,30 +35,59 @@ function ProductDetailsTab() {
             <div className="tab-content reviews-tab">
               <div className="tab-pane fade show active" id="tab_one">
                 <div className="tab-one">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                    fringilla augue nec est tristique auctor. Ipsum metus
-                    feugiat sem, quis fermentum turpis eros eget velit. Donec ac
-                    tempus ante. Fusce ultricies massa massa. Fusce aliquam,
-                    purus eget sagittis vulputate, sapien libero hendrerit est,
-                    sed commodo augue nisi non neque.Cras neque metus, consequat
-                    et blandit et, luctus a nunc. Etiam gravida vehicula tellus,
-                    in imperdiet ligula euismod eget. Pellentesque habitant
-                    morbi tristique senectus et netus et malesuada fames ac
-                    turpis egestas. Nam erat mi, rutrum at sollicitudin rhoncus
-                  </p>
+                  <p>{productdata?.productdescription}</p>
                 </div>
               </div>
               <div className="tab-pane fade" id="tab_two">
                 <table className="table table-bordered">
                   <tbody>
-                    <tr>
-                      <td>color</td>
-                      <td>black, blue, red</td>
+                  <tr>
+                      <td>Product type</td>
+                      <td>
+                        {productdata?.subcategory}
+                      </td>
                     </tr>
                     <tr>
-                      <td>size</td>
-                      <td>L, M, S</td>
+                      <td>color</td>
+                      <td>{productdata?.productColour?.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Blouse piece included</td>
+                      <td>
+                        {Boolean(productdata?.productDetails?.blouse_piece)
+                          ? "included"
+                          : "not included"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Fabric Name</td>
+                      <td>
+                        {productdata?.productDetails?.fabricname}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Fabric Description</td>
+                      <td>
+                        {productdata?.productDetails?.fabricDescription}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Length</td>
+                      <td>
+                        {productdata?.productDetails?.length}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>width</td>
+                      <td>
+                        {productdata?.productDetails?.width}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Wash care</td>
+                      <td>
+                        {productdata?.productDetails?.washcare}
+                      </td>
                     </tr>
                   </tbody>
                 </table>

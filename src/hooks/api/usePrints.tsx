@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { ProductPrintsApi, ProductPrintsEntity } from "../../services/openapi";
-import { config, showToast } from "../../context/root.context";
+import { showToast } from "../../context/root.context";
+import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const usePrints = () => {
   const [productPrints, setProductPrints] = useState<ProductPrintsEntity[]>([]);
+  const { getAxiosConfiguration } = useAxiosConfiguration();
   const getAllProductPrints = useMemo(
     () => () => {
-      const api: ProductPrintsApi = new ProductPrintsApi(config);
+      const api: ProductPrintsApi = new ProductPrintsApi(getAxiosConfiguration());
       api
         .productPrintsControllerGetAll()
         .then((resp) => {

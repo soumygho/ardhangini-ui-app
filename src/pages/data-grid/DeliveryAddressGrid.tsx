@@ -7,32 +7,48 @@ import {
   deliveryGridContext,
   DeliveryGridContext,
 } from "../../context/delivery-address-grid.context";
+import { DeliveryAddressEntity } from "../../services/openapi";
+import EditDeliveryAddressRenderer from "../modals/CellRenderers/EditDeliveryAddressRenderer";
+import DeleteDeliveryAddressRenderer from "../modals/CellRenderers/DeleteDeliveryAddressRenderer";
 interface DeliveryAddressGridProps {
-  rows: any[];
+  rows: DeliveryAddressEntity[];
   showAction: boolean;
-  selectGridFn?: (selectedRow: any) => void | undefined;
+  selectGridFn?: ((selectedRow: DeliveryAddressEntity) => void) | undefined;
+  deleteCallBack?: ((addressId: string) => void) | undefined;
+  editCallBack?: ((row: DeliveryAddressEntity) => void) | undefined;
 }
 function DeliveryAddressGrid({
   rows,
   showAction,
   selectGridFn,
+  deleteCallBack,
+  editCallBack,
 }: DeliveryAddressGridProps) {
   const gridRef = useRef<AgGridReact>(null);
-  const [rowData, setRowData] = useState<any[]>(rows);
-  const [selectedRow, setSelectedRow] = useState<any>(undefined);
+  const [rowData, setRowData] = useState<DeliveryAddressEntity[]>(rows);
+  const [selectedRow, setSelectedRow] = useState<any>();
 
   useEffect(() => {
     setRowData(rows);
   }, [rows]);
 
-  const editDeliveryAddress = useCallback((rowData: any) => {
+  const editDeliveryAddress = useCallback((rowData: DeliveryAddressEntity) => {
     console.trace("edit delivery address");
     console.trace(rowData);
+    if (editCallBack && rowData) {
+      editCallBack(rowData);
+    }
   }, []);
-  const deleteDeliveryAddress = useCallback((rowData: any) => {
-    console.trace("delete delivery address");
-    console.trace(rowData);
-  }, []);
+  const deleteDeliveryAddress = useCallback(
+    (rowData: DeliveryAddressEntity) => {
+      console.trace("delete delivery address");
+      console.trace(rowData);
+      if (deleteCallBack && rowData?.id) {
+        deleteCallBack(rowData.id);
+      }
+    },
+    []
+  );
 
   const contextData: DeliveryGridContext = {
     editDeliveryAddressFn: editDeliveryAddress,
@@ -51,9 +67,11 @@ function DeliveryAddressGrid({
   if (showAction) {
     colDefs.push({
       field: "Edit",
+      cellRenderer: EditDeliveryAddressRenderer,
     });
     colDefs.push({
       field: "Remove",
+      cellRenderer: DeleteDeliveryAddressRenderer,
     });
   }
 
@@ -70,10 +88,10 @@ function DeliveryAddressGrid({
     const selectedRows = gridRef.current!.api.getSelectedRows();
     console.log(selectedRows);
     selectedRows?.length > 0
-      ? setSelectedRow(selectedRows[0])
+      ? setSelectedRow(() => selectedRows[0])
       : setSelectedRow(undefined);
-    if (selectGridFn && selectedRow) {
-      selectGridFn(selectedRow);
+    if (selectGridFn) {
+      selectGridFn(selectedRows[0]);
     }
   };
 
