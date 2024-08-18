@@ -47,7 +47,7 @@ function ProductCard({ productData }: ProductCardProps) {
           {productData?.actualprice && productData?.offerprice && (
             <div className="product-label discount">
               <span>
-                {(productData?.actualprice - productData?.offerprice) / 100}%
+                {(productData?.actualprice - productData?.offerprice)}% off
               </span>
             </div>
           )}

@@ -36,6 +36,16 @@ function OrderListGrid({ rows }: OrderListGridProps) {
   // Column Definitions: Defines the columns to be displayed.
   const colDefs: ColDef[] = [
     { field: "orderId" },
+    {
+      headerName: "Order Date",
+      valueGetter: (p) => {
+        const orderDetails = p?.data as OrderResponse;
+        return orderDetails?.orderTimeLine &&
+          orderDetails?.orderTimeLine.length > 0
+          ? orderDetails?.orderTimeLine[0]?.eventDate
+          : "";
+      },
+    },
     { field: "orderType" },
     { field: "OrderStatus" },
     { field: "View Order Details", cellRenderer: ViewOrderCellRenderer },
