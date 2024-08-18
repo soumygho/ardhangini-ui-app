@@ -37,7 +37,7 @@ function CartDetailsPage({ isOrderDetails }: CartDetailsPageProps) {
   const [rowData, setRowData] = useState<CartLineItemResponse[]>([]);
   const { cartDetails, getCartDetails, addToCart } = useCartApi();
 
-  const updateCart = useCallback(() => {
+  const updateCart = useCallback(async () => {
     if (root?.userId) {
       const data: CartLineItemDto[] = [];
       gridRef?.current?.api?.forEachNode((node) => {
@@ -53,7 +53,7 @@ function CartDetailsPage({ isOrderDetails }: CartDetailsPageProps) {
         userId: root.userId,
         lineItems: data,
       };
-      addToCart(cartUpdateDto);
+      await addToCart(cartUpdateDto);
     }
   }, []);
 

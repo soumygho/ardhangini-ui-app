@@ -12,9 +12,9 @@ const useCollections = () => {
   
 
   const getAllCollections = useMemo(
-    () => () => {
+    () => async () => {
       const api: ProductCollectionApi = new ProductCollectionApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       api
         .productColelctionControllerGetAll()

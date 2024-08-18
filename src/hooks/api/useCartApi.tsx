@@ -12,8 +12,8 @@ const useCartApi = () => {
   const { getAxiosConfiguration } = useAxiosConfiguration();
   
   const getCartDetails = useMemo(
-    () => (userId: string) => {
-      const api: CartApi = new CartApi(getAxiosConfiguration());
+    () => async (userId: string) => {
+      const api: CartApi = new CartApi(await getAxiosConfiguration());
       api
         .cartControllerGetCartByUserId(userId)
         .then((resp) => {
@@ -30,8 +30,8 @@ const useCartApi = () => {
   );
 
   const removeFromCart = useMemo(
-    () => (dto: CartUpdateDto) => {
-      const api: CartApi = new CartApi(getAxiosConfiguration());
+    () => async (dto: CartUpdateDto) => {
+      const api: CartApi = new CartApi(await getAxiosConfiguration());
       api
         .cartControllerRemoveFromCart(dto)
         .then((resp) => {
@@ -48,8 +48,8 @@ const useCartApi = () => {
     []
   );
   const addToCart = useMemo(
-    () => (dto: CartUpdateDto) => {
-      const api: CartApi = new CartApi(getAxiosConfiguration());
+    () => async (dto: CartUpdateDto) => {
+      const api: CartApi = new CartApi(await getAxiosConfiguration());
       api
         .cartControllerAddToCart(dto)
         .then((resp) => {

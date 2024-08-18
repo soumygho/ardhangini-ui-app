@@ -37,6 +37,8 @@ export interface RootContext {
   selectedPrimarySareeFilter?: SareeFilter;
   setPrimaryFilter: (filter: SareeFilter) => void;
   setUserId: (userId: string) => void;
+  isAccessTokenExpired: boolean;
+  setIsAccessTokenExpired: (flag: boolean) => void;
 }
 //this is used to declare static dependency to remove repeated rendering
 export const config = {};

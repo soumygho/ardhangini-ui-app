@@ -24,9 +24,9 @@ const useDeliveryAddressApi = () => {
   
 
   const addOrUpdateDeliveryAddress = useMemo(
-    () => (data: UpdateDeliveryAddressDto) => {
+    () => async (data: UpdateDeliveryAddressDto) => {
       const api: DeliveryAddressApi = new DeliveryAddressApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       if (root?.userId) {
         data.userId = root.userId;
@@ -45,9 +45,9 @@ const useDeliveryAddressApi = () => {
   );
 
   const getDeliveryAddressesForCurrentUser = useMemo(
-    () => () => {
+    () => async () => {
       const api: DeliveryAddressApi = new DeliveryAddressApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       if (root?.userId) {
         api
@@ -65,9 +65,9 @@ const useDeliveryAddressApi = () => {
   );
 
   const removeDeliveryAddressesForCurrentUser = useMemo(
-    () => (addressId: string) => {
+    () => async (addressId: string) => {
       const api: DeliveryAddressApi = new DeliveryAddressApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       if (root?.userId) {
         api

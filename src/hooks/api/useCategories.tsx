@@ -13,7 +13,7 @@ const useCategories = () => {
 
   const getAllCategories = useMemo(
     () => () => {
-      const api: CategoryApi = new CategoryApi(getAxiosConfiguration());
+      const api: CategoryApi = new CategoryApi( getAxiosConfiguration());
       api
         .categoryControllerFindAll()
         .then((resp) => {

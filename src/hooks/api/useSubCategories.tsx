@@ -7,8 +7,8 @@ const useSubCategories = () => {
   const [subcategories, setSubCategories] = useState<SubcategoryEntity[]>([]);
   const { getAxiosConfiguration } = useAxiosConfiguration();
   const getAllSubCategories = useMemo(
-    () => () => {
-      const api: SubcategoryApi = new SubcategoryApi(getAxiosConfiguration());
+    () => async () => {
+      const api: SubcategoryApi = new SubcategoryApi(await getAxiosConfiguration());
       api
         .subcategoryControllerFindAll()
         .then((resp) => {

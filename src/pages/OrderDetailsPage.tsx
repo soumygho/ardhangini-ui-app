@@ -3,7 +3,6 @@ import { AgGridReact } from "ag-grid-react";
 import { useRef } from "react";
 import ProductThumbnailRenderer from "./modals/CellRenderers/ProductThumbnailRenderer";
 import ProductNameRenderer from "./modals/CellRenderers/ProductNameRenderer";
-import CartTotalPriceRenderer from "./modals/CellRenderers/CartTotalPriceRenderer";
 import {
   CreateOrderDtoOrderTypeEnum,
   OrderResponse,
@@ -17,6 +16,7 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import OrderDetailsLineItemPriceRenderer from "./modals/CellRenderers/OrderDetailsLineItemPriceRenderer";
 
 interface OrderDetailsProps {
   data?: OrderResponse;
@@ -30,7 +30,10 @@ function OrderDetailsPage({ data }: OrderDetailsProps) {
     { field: "productThumbnail", cellRenderer: ProductThumbnailRenderer },
     { field: "productName", cellRenderer: ProductNameRenderer },
     { field: "quantity", type: "number", editable: false },
-    { field: "totalFinalPrice", cellRenderer: CartTotalPriceRenderer },
+    {
+      field: "totalFinalPrice",
+      cellRenderer: OrderDetailsLineItemPriceRenderer,
+    },
   ];
   const defaultColDef = {
     flex: 1,
@@ -105,9 +108,7 @@ function OrderDetailsPage({ data }: OrderDetailsProps) {
                           <td>Total</td>
                           <td className="total-amount">
                             &#x20b9;
-                            {data?.totalFinalPrice
-                              ? data.totalFinalPrice + totalShippingCharge
-                              : totalShippingCharge}
+                            {data?.totalFinalPrice}
                           </td>
                         </tr>
                       </tbody>

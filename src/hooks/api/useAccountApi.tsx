@@ -18,7 +18,7 @@ const useAccountDetailsApi = () => {
   const registerUsingEmail = useMemo(
     () => async (data: RegisterEmailPasswordDto) => {
       try {
-        const api: UserApi = new UserApi(getAxiosConfiguration());
+        const api: UserApi = new UserApi(await getAxiosConfiguration());
         await api.userControllerRegisterUsingEmailAndPassword(data);
         showToast("Registration successful. Please Login.");
       } catch (e) {
@@ -32,7 +32,7 @@ const useAccountDetailsApi = () => {
   const getUserDetailsUsingToken = useMemo(
     () => async () => {
       try {
-        const api: UserApi = new UserApi(getAxiosConfiguration());
+        const api: UserApi = new UserApi(await getAxiosConfiguration());
         const data = (await api.userControllerGetUserDetailsByToken()).data;
         return data;
       } catch (e) {
@@ -45,7 +45,7 @@ const useAccountDetailsApi = () => {
   const updateUserDetails = useMemo(
     () => async (dto: UpdateUserDto) => {
       try {
-        const api: UserApi = new UserApi(getAxiosConfiguration());
+        const api: UserApi = new UserApi(await getAxiosConfiguration());
         if (root?.userId) {
           dto.userid = root.userId;
           const data = (await api.userControllerUpdate(dto)).data;

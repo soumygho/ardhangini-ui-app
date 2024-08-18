@@ -41,7 +41,7 @@ import {
 import useCartApi from "./hooks/api/useCartApi";
 import useWishListApi from "./hooks/api/useWishListApi";
 import { ToastContainer } from "react-toastify";
-import useAuthApi from "./hooks/api/useAuthApi";
+import useUserAuthApi from "./hooks/api/useAuthApi";
 
 function App() {
   const { shouldShowLoginModal, handleModalClose, showLoginModal } =
@@ -56,19 +56,17 @@ function App() {
   const { productOccassions, getAllProductOccassions } = useProductOccassions();
   const { productStyles, getAllProductStyles } = useStyles();
   const { subcategories, getAllSubCategories } = useSubCategories();
-  const { cartDetails, getCartDetails, addToCart, removeFromCart } =
-    useCartApi();
-  const {
-    wishListDetails,
-    getWishListDetails,
-    addToWishList,
-    removeFromWishList,
-  } = useWishListApi();
+  const { getCartDetails, addToCart, removeFromCart } = useCartApi();
+  const { addToWishList, removeFromWishList } = useWishListApi();
 
   const [userId, setUserId] = useState(""); //ed232079-582d-414c-8045-d08552211cc4
-  const { setAuthentication } = useAuthApi();
+  const [isAccesstokenExpired, setIsAccessTokenExpired] = useState(false);
+  const { setAuthentication } = useUserAuthApi();
   useEffect(() => {
-    setUserId(() => setAuthentication());
+    setAuthentication().then((data) => {
+      console.trace("userid : " + data);
+      setUserId(() => data);
+    });
   });
   useEffect(() => {
     getAllCategories();
@@ -174,6 +172,10 @@ function App() {
     },
     setUserId: function (userId: string): void {
       setUserId(() => userId);
+    },
+    isAccessTokenExpired: isAccesstokenExpired,
+    setIsAccessTokenExpired: function (flag: boolean): void {
+      setIsAccessTokenExpired(() => flag);
     },
   };
   return (

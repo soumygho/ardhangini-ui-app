@@ -8,8 +8,8 @@ const useStyles = () => {
   const { getAxiosConfiguration } = useAxiosConfiguration();
   
   const getAllProductStyles = useMemo(
-    () => () => {
-      const api: ProductStyleApi = new ProductStyleApi(getAxiosConfiguration());
+    () => async () => {
+      const api: ProductStyleApi = new ProductStyleApi(await getAxiosConfiguration());
       api
         .productStyleControllerGetAll()
         .then((resp) => {

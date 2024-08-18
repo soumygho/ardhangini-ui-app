@@ -16,9 +16,9 @@ const useSareeDetailsApi = () => {
   
 
   const getAllSarees = useMemo(
-    () => (filter: SareeFilterDto) => {
+    () => async (filter: SareeFilterDto) => {
       const api: CustomerSareeDetailsApi = new CustomerSareeDetailsApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       api
         .sareeControllerGetAll(filter)
@@ -36,9 +36,9 @@ const useSareeDetailsApi = () => {
   );
 
   const getRelatedSarees = useMemo(
-    () => (sareeId: string) => {
+    () => async (sareeId: string) => {
       const api: CustomerSareeDetailsApi = new CustomerSareeDetailsApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       api
         .sareeControllerGetRelatedSarees(sareeId)

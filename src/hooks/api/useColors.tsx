@@ -12,8 +12,8 @@ const useColors = () => {
   const { getAxiosConfiguration } = useAxiosConfiguration();
   
   const getAllProductColors = useMemo(
-    () => () => {
-      const api: ProductColorApi = new ProductColorApi(getAxiosConfiguration());
+    () => async () => {
+      const api: ProductColorApi = new ProductColorApi(await getAxiosConfiguration());
       api
         .productColorControllerGetAll()
         .then((resp) => {

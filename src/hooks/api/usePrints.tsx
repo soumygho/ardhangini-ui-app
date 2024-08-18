@@ -7,8 +7,8 @@ const usePrints = () => {
   const [productPrints, setProductPrints] = useState<ProductPrintsEntity[]>([]);
   const { getAxiosConfiguration } = useAxiosConfiguration();
   const getAllProductPrints = useMemo(
-    () => () => {
-      const api: ProductPrintsApi = new ProductPrintsApi(getAxiosConfiguration());
+    () => async () => {
+      const api: ProductPrintsApi = new ProductPrintsApi(await getAxiosConfiguration());
       api
         .productPrintsControllerGetAll()
         .then((resp) => {

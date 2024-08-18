@@ -14,8 +14,8 @@ const useWishListApi = () => {
   const [wishListDetails, setWishListDetails] =
     useState<WishListDetailsResponse>();
   const getWishListDetails = useMemo(
-    () => (userId: string) => {
-      const api: WishListApi = new WishListApi(getAxiosConfiguration());
+    () => async (userId: string) => {
+      const api: WishListApi = new WishListApi(await getAxiosConfiguration());
       api
         .wishListControllerGetWishListByUserId(userId)
         .then((resp) => {
@@ -33,8 +33,8 @@ const useWishListApi = () => {
   );
 
   const removeFromWishList = useMemo(
-    () => (dto: WishListUpdateDto) => {
-      const api: WishListApi = new WishListApi(getAxiosConfiguration());
+    () => async (dto: WishListUpdateDto) => {
+      const api: WishListApi = new WishListApi(await getAxiosConfiguration());
       api
         .wishListControllerRemoveFrom(dto)
         .then((resp) => {
@@ -51,8 +51,8 @@ const useWishListApi = () => {
     []
   );
   const addToWishList = useMemo(
-    () => (dto: WishListUpdateDto) => {
-      const api: WishListApi = new WishListApi(getAxiosConfiguration());
+    () => async (dto: WishListUpdateDto) => {
+      const api: WishListApi = new WishListApi(await getAxiosConfiguration());
       api
         .wishListControllerAddToWishList(dto)
         .then((resp) => {

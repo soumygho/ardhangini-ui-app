@@ -13,9 +13,9 @@ const useProductOccassions = () => {
   const { getAxiosConfiguration } = useAxiosConfiguration();
   
   const getAllProductOccassions = useMemo(
-    () => () => {
+    () => async () => {
       const api: ProductOccassionApi = new ProductOccassionApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       api
         .productOccassionControllerGetAll()

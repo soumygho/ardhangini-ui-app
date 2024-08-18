@@ -14,9 +14,9 @@ const useFabrics = () => {
   const { getAxiosConfiguration } = useAxiosConfiguration();
   
   const getAllProductFabrics = useMemo(
-    () => () => {
+    () => async () => {
       const api: FabricDetailsApiApi = new FabricDetailsApiApi(
-        getAxiosConfiguration()
+        await getAxiosConfiguration()
       );
       api
         .fabricControllerFindAll()

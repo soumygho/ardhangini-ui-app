@@ -14,8 +14,8 @@ const useOrdersApi = () => {
   const root = useContext(rootContext);
 
   const getAllOrderDetails = useMemo(
-    () => () => {
-      const api: OrderApiApi = new OrderApiApi(getAxiosConfiguration());
+    () => async () => {
+      const api: OrderApiApi = new OrderApiApi(await getAxiosConfiguration());
       if (root?.userId) {
         api
           .orderControllerFindAllByUser(root?.userId)
@@ -35,7 +35,7 @@ const useOrdersApi = () => {
 
   const placeOrder = useMemo(
     () => async (dto: CreateOrderDto) => {
-      const api: OrderApiApi = new OrderApiApi(getAxiosConfiguration());
+      const api: OrderApiApi = new OrderApiApi(await getAxiosConfiguration());
       if (root?.userId) {
         dto.userId = root.userId;
         try {
@@ -51,8 +51,8 @@ const useOrdersApi = () => {
     []
   );
   const returnOrder = useMemo(
-    () => (userId: string, orderId: string) => {
-      const api: OrderApiApi = new OrderApiApi(getAxiosConfiguration());
+    () => async (userId: string, orderId: string) => {
+      const api: OrderApiApi = new OrderApiApi(await getAxiosConfiguration());
       api
         .orderControllerReturnOrder(userId, orderId)
         .then((resp) => {
@@ -69,8 +69,8 @@ const useOrdersApi = () => {
   );
 
   const cancelOrder = useMemo(
-    () => (userId: string, orderId: string) => {
-      const api: OrderApiApi = new OrderApiApi(getAxiosConfiguration());
+    () => async (userId: string, orderId: string) => {
+      const api: OrderApiApi = new OrderApiApi(await getAxiosConfiguration());
       api
         .orderControllerCancelOrder(userId, orderId)
         .then((resp) => {

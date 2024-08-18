@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   handleApiError,
   rootContext,
@@ -9,30 +9,42 @@ import {
   TokenResponse,
   UserAuthApi,
 } from "../../services/openapi";
-import { decodeToken } from "react-jwt";
+import { decodeToken, isExpired } from "react-jwt";
 import useAxiosConfiguration from "./useAxiosConfiguration";
 
 const useUserAuthApi = () => {
   const root = useContext(rootContext);
   const { getAxiosConfiguration } = useAxiosConfiguration();
 
-  const api = new UserAuthApi(getAxiosConfiguration());
-
-  const setAuthentication = () => {
+  const setAuthentication = async () => {
     const token = localStorage.getItem("token");
-    if (token) {
+    const refreshToken = localStorage.getItem("refresh-token");
+    if (token && !isExpired(token)) {
       const decodedToken: any = decodeToken(token);
       //need to check if valid token
       console.trace(decodeToken);
       return decodedToken.sub;
+    } else if (refreshToken && !isExpired(refreshToken)) {
+      console.trace('access token expired refreshing token.');
+      await handleRefreshToken();
+      const accesstoken = localStorage.getItem("token");
+      if (accesstoken) {
+        const decodedToken: any = decodeToken(accesstoken);
+        //need to check if valid token
+        console.trace(decodeToken);
+        return decodedToken.sub;
+      }
+    } else {
+      return '';
     }
   };
 
-  const setTokenResponse = (tokenResponse: TokenResponse) => {
+  const setTokenResponse = async (tokenResponse: TokenResponse) => {
+    const api = new UserAuthApi(await getAxiosConfiguration());
     localStorage.setItem("token", tokenResponse.accessToken);
     localStorage.setItem("refresh-token", tokenResponse.refreshToken);
     console.trace(tokenResponse);
-    if (root) {
+    if (root && tokenResponse.accessToken) {
       const decodedToken: any = decodeToken(tokenResponse.accessToken);
       console.trace(decodeToken);
       root.setUserId(decodedToken.sub);
@@ -48,6 +60,7 @@ const useUserAuthApi = () => {
 
   const handleLoginUsingEmail = async (data: EmailAuthDto) => {
     try {
+      const api = new UserAuthApi(await getAxiosConfiguration());
       const resp = (
         await api.userAuthControllerSigninUsingEmailAndPassword(data)
       ).data;
@@ -55,23 +68,9 @@ const useUserAuthApi = () => {
       showToast("Login Successful");
       return resp;
     } catch (e) {
-      handleApiError(e);
-    }
-  };
-
-  const handleRefreshToken = async () => {
-    try {
-      const config = getAxiosConfiguration();
-      const refreshToken = localStorage.getItem("refresh-token");
-      if (refreshToken) {
-        config.accessToken = refreshToken;
+      if (root) {
+        root.setUserId("");
       }
-      const authApi = new UserAuthApi(config);
-      const resp = (await authApi.userAuthControllerRefreshToken()).data;
-      setTokenResponse(resp);
-      showToast("token refreshed Successfully.");
-      return resp;
-    } catch (e) {
       handleApiError(e);
     }
   };
@@ -79,7 +78,7 @@ const useUserAuthApi = () => {
   const handleLogout = async () => {
     try {
       const config = getAxiosConfiguration();
-      const authApi = new UserAuthApi(config);
+      const authApi = new UserAuthApi(await config);
       const resp = (await authApi.userAuthControllerLogoutUser()).data;
       clearTokens();
       showToast("Logout Successfully.");
@@ -88,7 +87,38 @@ const useUserAuthApi = () => {
     }
   };
 
-  return { handleLoginUsingEmail, handleRefreshToken, handleLogout, setAuthentication };
+  const handleRefreshToken = async () => {
+    try {
+      const config = await getAxiosConfiguration();
+      const refreshToken = localStorage.getItem("refresh-token");
+      if (refreshToken && !isExpired(refreshToken)) {
+        config.accessToken = refreshToken;
+        const authApi = new UserAuthApi(await config);
+        const resp = (await authApi.userAuthControllerRefreshToken()).data;
+        setTokenResponse(resp);
+        showToast("token refreshed Successfully.");
+        return resp;
+      } else {
+        console.trace("Refresh token is expired.");
+        if (root) {
+          root.setUserId("");
+          root.setIsAccessTokenExpired(false);
+        }
+      }
+    } catch (e) {
+      if (root) {
+        root.setUserId("");
+      }
+      handleApiError(e);
+    }
+  };
+
+  return {
+    handleLoginUsingEmail,
+    handleLogout,
+    setAuthentication,
+    handleRefreshToken,
+  };
 };
 
 export default useUserAuthApi;
