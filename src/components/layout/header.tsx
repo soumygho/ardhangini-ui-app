@@ -116,8 +116,8 @@ function Header() {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <p className="text-light">
-                  FLAT 10% OFF on orders above ₹4,999 | Code: MOTHERSDAY
+                <p className="text-light enable-animation">
+                <i className="fa-solid fa-fire link-warning fs-5"></i> FLAT 10% OFF on orders above ₹4,999 | Code: MOTHERSDAY <i className="fa-solid fa-fire link-warning fs-5"></i>
                 </p>
               </div>
             </div>

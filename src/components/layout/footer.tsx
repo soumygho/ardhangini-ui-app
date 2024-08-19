@@ -29,16 +29,13 @@ function Footer() {
                       <div className="elementor-widget-wrap elementor-element-populated">
                         <a href="#">
                           <img
-                            height="106"
                             src={logo}
                             className="footer-logo"
                           />
                         </a>
                         <div className="text-left">
                           <p>
-                            AnarPot is a Ethnic, traditional and daily wear
-                            clothing known for its trend-driven styles with
-                            affordable prices.
+                          Welcome to ARDHANGINI DESIGNS, where tradition meets elegance. Established in 2024, our company is dedicated to preserving the rich heritage of Indian textiles while embracing contemporary fashion trends.
                           </p>
                         </div>
                         <div
@@ -74,12 +71,12 @@ function Footer() {
                                 Mail Us -{" "}
                                 <a
                                   className="autolinked"
-                                  href="mailto:customersupport@anarpot.com"
+                                  href="mailto:customersupport@Ardhangini Designs.com"
                                   target="_blank"
                                   rel="noopener"
                                   data-behavior="truncate"
                                 >
-                                  customersupport@anarpot.com
+                                  customersupport@Ardhangini Designs.com
                                 </a>
                                 <br />
                                 Customer Contact No -{" "}

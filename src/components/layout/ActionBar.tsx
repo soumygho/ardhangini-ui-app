@@ -16,9 +16,9 @@ function ActionBar() {
     <section className="brandlogo-sec py-2 d-none d-md-block">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-2">
+          <div className="col-md-4">
             <Link to="/">
-              <img src={logo} alt="Logo" className="img-fluid" width="130" />
+              <img src={logo} alt="Logo" className="img-fluid" />
             </Link>
           </div>
           <div className="col-md-4">
@@ -33,7 +33,7 @@ function ActionBar() {
               </button>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <ul className="d-flex align-items-center justify-content-end user-section">
               <li>
                 <a className="text-dark">

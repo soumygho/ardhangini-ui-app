@@ -49,7 +49,7 @@ a {
     margin-right: 0;
     position: relative;
     z-index: 2;
-    padding: 30px 25px;
+    padding: 0px 10px;
     width: 100%;
     display: flex;
 }

@@ -58,9 +58,9 @@ function MenuBar() {
                 New Arrivals
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item position-relative">
               <Link
-                className="nav-link"
+                className="nav-link dropdown-toggle"
                 aria-current="page"
                 to="/sarees"
                 role="button"
@@ -70,9 +70,9 @@ function MenuBar() {
               >
                 Collections
               </Link>
-              <div className="dropdown-menu px-3 rounded-3 border-0 shadow w-100">
+              <div className="dropdown-menu px-3 rounded-3 border-0 shadow">
                 <div className="nav-mega-section row  full-flex-row ">
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Collections</span>
                     </h5>
@@ -109,7 +109,7 @@ function MenuBar() {
               </Link>
               <div className="dropdown-menu px-3 rounded-3 border-0 shadow w-100">
                 <div className="nav-mega-section row  full-flex-row ">
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>WEAVES</span>
                     </h5>
@@ -132,7 +132,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>FABRIC</span>
                     </h5>
@@ -155,7 +155,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>PRINTS</span>
                     </h5>
@@ -178,7 +178,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>COLOUR</span>
                     </h5>
@@ -201,7 +201,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Occasion</span>
                     </h5>
@@ -224,7 +224,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col-md-3 mega-menu-column child-links-column mb-4 mb-sm-0">
+                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Style</span>
                     </h5>
