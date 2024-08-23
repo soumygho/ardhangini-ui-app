@@ -55,7 +55,7 @@ function MenuBar() {
                 to="/newarrivals"
                 onClick={() => handleClick(SareeFilterFilterTypeEnum.New)}
               >
-                New Arrivals
+                Newcomers
               </Link>
             </li>
             <li className="nav-item position-relative">
@@ -105,13 +105,13 @@ function MenuBar() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sarees Quest
+                Saree-Quest
               </Link>
               <div className="dropdown-menu px-3 rounded-3 border-0 shadow w-100">
                 <div className="nav-mega-section row  full-flex-row ">
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <span>WEAVES</span>
+                      <span>Shop by Fabric</span>
                     </h5>
                     <ul className="nav-mega-section-list">
                       {root?.subCategories?.map((value, index) => (
@@ -134,7 +134,7 @@ function MenuBar() {
 
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <span>FABRIC</span>
+                      <span>Shop by Colour</span>
                     </h5>
                     <ul className="nav-mega-section-list">
                       {root?.fabrics?.map((value, index) => (
@@ -157,7 +157,7 @@ function MenuBar() {
 
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <span>PRINTS</span>
+                      <span>Shop by Print</span>
                     </h5>
                     <ul className="nav-mega-section-list">
                       {root?.prints?.map((value, index) => (
@@ -180,7 +180,7 @@ function MenuBar() {
 
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <span>COLOUR</span>
+                      <span>Shop by Occasion</span>
                     </h5>
                     <ul className="nav-mega-section-list">
                       {root?.colors?.map((value, index) => (
@@ -203,7 +203,7 @@ function MenuBar() {
 
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
-                      <span>Occasion</span>
+                      <span>Shop by Style</span>
                     </h5>
                     <ul className="nav-mega-section-list">
                       {root?.occassions?.map((value, index) => (
@@ -224,7 +224,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
+                  {/* <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Style</span>
                     </h5>
@@ -245,7 +245,7 @@ function MenuBar() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </li>
@@ -256,7 +256,7 @@ function MenuBar() {
                 to="/readytoship"
                 onClick={() => handleClick(SareeFilterFilterTypeEnum.Shippable)}
               >
-                Ready to Ship
+                Shippable
               </Link>
             </li>
             <li className="nav-item">

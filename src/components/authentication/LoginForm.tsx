@@ -59,7 +59,7 @@ function LoginForm() {
                   </label>
                 </div>
               </div>
-              <a className="forget-pwd">Forget Password?</a>
+              <a className="forget-pwd">Forgot Password?</a>
             </div>
           </div>
           <div className="single-input-item">
