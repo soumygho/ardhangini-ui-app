@@ -39,7 +39,7 @@ function RegistrationForm() {
   return (
     <div className="col-lg-6">
       <div className="login-reg-form-wrap sign-up-form">
-        <h2>Singup Form</h2>
+        <h2>Sign Up</h2>
         {shouldShowAlert && (
           <AlertSection
             message={alertContent}
