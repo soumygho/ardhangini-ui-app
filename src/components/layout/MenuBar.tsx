@@ -30,7 +30,7 @@ function MenuBar() {
     <nav className="navbar navbar-expand-lg shadow-sm bg-light navbar-light sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand d-block d-sm-none" to="/">
-          <img src={logo} alt="Logo" className="img-fluid" width="230" />
+          <img src={logo} alt="Logo" className="img-fluid" width="250" />
         </Link>
         <button
           className="navbar-toggler"
