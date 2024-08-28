@@ -6567,8 +6567,11 @@ only screen and (max-width: 767.98px) {
     .footer-social-link {
         text-align: center;
     }
-    .navbar-brand img {
+    /* .navbar-brand img {
         max-width: 50px;
+    } */
+    .service-policy-area img {
+        height: 120px;
     }
     .widget_nav_menu {
         margin-top: 0;

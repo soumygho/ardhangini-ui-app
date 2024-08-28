@@ -30,7 +30,7 @@ function MenuBar() {
     <nav className="navbar navbar-expand-lg shadow-sm bg-light navbar-light sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand d-block d-sm-none" to="/">
-          <img src={logo} alt="Logo" className="img-fluid" width="130" />
+          <img src={logo} alt="Logo" className="img-fluid" width="230" />
         </Link>
         <button
           className="navbar-toggler"
@@ -71,7 +71,7 @@ function MenuBar() {
                 Collections
               </Link>
               <div className="dropdown-menu px-3 rounded-3 border-0 shadow">
-                <div className="nav-mega-section row  full-flex-row ">
+                <div className="nav-mega-section row row-cols-md-5 row-cols-1 full-flex-row">
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Collections</span>
@@ -108,7 +108,7 @@ function MenuBar() {
                 Saree-Quest
               </Link>
               <div className="dropdown-menu px-3 rounded-3 border-0 shadow w-100">
-                <div className="nav-mega-section row  full-flex-row ">
+                <div className="nav-mega-section row row-cols-md-5 row-cols-1 full-flex-row ">
                   <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Shop by Fabric</span>
