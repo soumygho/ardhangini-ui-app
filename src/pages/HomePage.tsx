@@ -15,7 +15,7 @@ function HomePage() {
         <TrendingProducts title="New Products" />
         <Offers />
         <TrendingProducts title="Top Seller" />
-        {/* <Testimonials /> */}
+        <Testimonials />
         <ServicePolicy />
         {/* <Blogs /> */}
       </main>
