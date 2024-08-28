@@ -66,7 +66,7 @@ function ActionBar() {
               {!root?.userId && (
                 <li>
                   <a className="text-dark" onClick={root?.handleShowLoginModal}>
-                    <i className="fas fa-sign-in-alt"></i> Login / Register
+                    <i className="fas fa-sign-in-alt"></i> Login
                   </a>
                 </li>
               )}

@@ -574,3 +574,16 @@ footer .footer-logo {
     margin-top: 10px;
     display: inline-block;
 }
+@media(max-width:1199px) {
+    .user-section li {
+        margin: 0 5px;
+    }
+    .user-section li a {
+        font-size: 12px;
+    }
+}
+/* @media(max-width:991px) {
+    .user-section li a {
+        font-size: 10px;
+    }
+} */
