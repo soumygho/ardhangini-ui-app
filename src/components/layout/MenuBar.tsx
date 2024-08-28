@@ -224,7 +224,7 @@ function MenuBar() {
                     </ul>
                   </div>
 
-                  {/* <div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
+                  {<div className="col mega-menu-column child-links-column mb-4 mb-sm-0">
                     <h5 className="nav-mega-section-title">
                       <span>Style</span>
                     </h5>
@@ -245,7 +245,7 @@ function MenuBar() {
                         </li>
                       ))}
                     </ul>
-                  </div> */}
+                  </div>}
                 </div>
               </div>
             </li>
